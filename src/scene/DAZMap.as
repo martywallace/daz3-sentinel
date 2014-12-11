@@ -7,9 +7,10 @@ package scene
 	public class DAZMap extends Map
 	{
 		
-		public function DAZMap()
+		protected override function construct():void
 		{
-			//
+			var hero:Hero = new Hero();
+			world.add(hero);
 		}
 		
 	}

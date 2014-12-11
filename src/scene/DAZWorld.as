@@ -14,6 +14,14 @@ package scene
 			super(new EngineDef(), debugPhysics ? new Debug(game) : null);
 		}
 		
+		
+		protected override function update():void
+		{
+			super.update();
+			
+			camera.lookAt(getUnique('Hero'));
+		}
+		
 	}
 	
 }

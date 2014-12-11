@@ -1,6 +1,7 @@
 package states
 {
 	
+	import scene.DAZMap;
 	import scene.DAZWorld;
 	import sentinel.gameplay.states.GameplayState;
 	import ui.HUD;
@@ -15,6 +16,9 @@ package states
 			var hud:HUD = new HUD();
 			
 			super(world, hud);
+			
+			
+			world.loadMap(new DAZMap());
 		}
 		
 		

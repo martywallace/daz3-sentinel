@@ -25,7 +25,16 @@ package states
 		{
 			if (button.text === BUTTON_TEXT_PLAY)
 			{
-				//
+				if (storage.load('levelsUnlocked') === null)
+				{
+					// Starting a new game.
+					game.loadState(new Gameplay());
+				}
+				else
+				{
+					// Give the player a choice of previously unlocked level.
+					game.loadState(new LevelPicker());
+				}
 			}
 		}
 		

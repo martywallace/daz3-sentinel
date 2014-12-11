@@ -7,8 +7,10 @@ package states
 	public class LevelPicker extends State
 	{
 		
-		public class LevelPicker()
+		public function LevelPicker()
 		{
+			super();
+			
 			//
 		}
 		

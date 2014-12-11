@@ -4,7 +4,7 @@ package
 	import sentinel.framework.Core;
 	
 	
-	[SWF(frameRate='60', width='700', height='580')]
+	[SWF(frameRate='60', width='800', height='580')]
 	
 	
 	public class Main extends Core

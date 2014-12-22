@@ -3,11 +3,12 @@ package states
 	
 	import scene.DAZMap;
 	import scene.DAZWorld;
-	import sentinel.gameplay.states.GameplayState;
+	import sentinel.testing.states.TestGameplay;
+	import events.CreatureEvent;
 	import ui.HUD;
 	
 	
-	public class Gameplay extends GameplayState
+	public class Gameplay extends TestGameplay
 	{
 		
 		public function Gameplay()
@@ -19,6 +20,15 @@ package states
 			
 			
 			world.loadMap(new DAZMap());
+			
+			world.hero.addEventListener(CreatureEvent.DIE, _heroDied);
+		}
+		
+		
+		private function _heroDied(event:CreatureEvent):void
+		{
+			// The hero died, back to the Main menu for now.
+			game.loadState(new Menu());
 		}
 		
 		

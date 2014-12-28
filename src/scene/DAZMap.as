@@ -2,6 +2,7 @@ package scene
 {
 	
 	import flash.geom.Point;
+	import sentinel.gameplay.physics.Vector2D;
 	import sentinel.gameplay.world.BoundaryBox;
 	import sentinel.gameplay.world.Map;
 	import sentinel.framework.util.Random;
@@ -12,7 +13,9 @@ package scene
 	{
 		
 		private var _enemies:int = 0;
-		private var _maxEnemies:int = 10;
+		private var _maxEnemies:int = 4;
+		private var _remaining:int = 12;
+		private var _round:int = 1;
 		
 		
 		protected override function construct():void
@@ -50,6 +53,14 @@ package scene
 		private function _creatureDied(event:CreatureEvent):void
 		{
 			_enemies -= 1;
+			_remaining -= 1;
+			
+			if (_remaining <= 0)
+			{
+				_round += 1;
+				_remaining = 12 + (_round * 2.5);
+				_maxEnemies = 4 + (_round * 1.5);
+			}
 		}
 		
 		
@@ -97,6 +108,9 @@ package scene
 		{
 			return (world as DAZWorld).hero;
 		}
+		
+		
+		public function get remaining():int { return _remaining; }
 		
 	}
 	

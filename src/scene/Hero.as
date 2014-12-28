@@ -36,8 +36,14 @@ package scene
 		public override function deconstruct():void
 		{
 			mouse.removeEventListener(MouseEvent.LEFT_DOWN, _fire);
-			
 			super.deconstruct();
+		}
+		
+		
+		public function pickup(pickup:Pickup):void
+		{
+			// TODO: Eat pickup.
+			// ...
 		}
 		
 		
@@ -63,7 +69,7 @@ package scene
 		protected override function defineBody(engine:Engine):Body
 		{
 			var body:Body = engine.createBody(Body.DYNAMIC, this);
-			body.createFixture(new Circle(25), new FixtureDef(1));
+			body.createFixture(new Circle(20), new FixtureDef(1));
 			
 			body.linearDamping = 12;
 			

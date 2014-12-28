@@ -7,6 +7,7 @@ package scene
 	import sentinel.gameplay.physics.Circle;
 	import sentinel.gameplay.physics.Engine;
 	import sentinel.gameplay.world.IGroupable;
+	import scene.Pickup;
 	
 	
 	public class Zombie extends Enemy implements IGroupable
@@ -27,6 +28,8 @@ package scene
 		protected override function defineGraphics():IGraphics
 		{
 			var graphics:Image = library.getImage('zombie');
+			
+			graphics.depth = DAZWorld.DEPTH_CREATURES;
 			graphics.alignPivot();
 			
 			return graphics;
@@ -37,10 +40,16 @@ package scene
 		{
 			var body:Body = engine.createBody(Body.DYNAMIC, this);
 			
-			body.createFixture(new Circle(25));
+			body.createFixture(new Circle(20));
 			body.linearDamping = 8;
 			
 			return body;
+		}
+		
+		
+		protected override function definePickupTypes():Vector.<String>
+		{
+			return new <String>[Pickup.HANDGUN_AMMO, Pickup.MACHINEGUN_AMMO];
 		}
 		
 		

@@ -47,18 +47,18 @@ package
 			}));
 			
 			library.addAtlas('pickups', new TextureAtlas(Texture.fromBitmap(new _pickupsAsset()), {
-				'handgunAmmo': new Rectangle(26, 1, 15, 9),
-				'machinegunAmmo': new Rectangle(72, 27, 15, 9),
-				'shotgunAmmo': new Rectangle(74, 83, 15, 9),
-				'revolverAmmo': new Rectangle(28, 49, 15, 9),
-				'rocketLauncherAmmo': new Rectangle(95, 61, 15, 9),
-				'lasergunAmmo': new Rectangle(95, 1, 13, 9),
 				'handgun': new Rectangle(0, 0, 24, 16),
+				'handgunAmmo': new Rectangle(26, 1, 15, 9),
 				'machinegun': new Rectangle(0, 26, 70, 16),
+				'machinegunAmmo': new Rectangle(72, 27, 15, 9),
 				'shotgun': new Rectangle(0, 82, 72, 12),
+				'shotgunAmmo': new Rectangle(74, 83, 15, 9),
 				'revolver': new Rectangle(0, 48, 26, 12),
+				'revolverAmmo': new Rectangle(28, 49, 15, 9),
 				'rocketLauncher': new Rectangle(0, 60, 93, 22),
+				'rocketLauncherAmmo': new Rectangle(95, 61, 15, 9),
 				'lasergun': new Rectangle(41, 0, 52, 26),
+				'lasergunAmmo': new Rectangle(95, 1, 13, 9),
 				'healthpack': new Rectangle(89, 27, 21, 21)
 			}));
 			

@@ -21,7 +21,10 @@ package ui
 			var graphics:Sprite = new Sprite();
 			
 			_background = new Quad(120, 12, 0x222222);
-			_fill = new Quad(120, 12, 0x00CC33);
+			_fill = new Quad(116, 8, 0x00CC33);
+			
+			_fill.x = 2;
+			_fill.y = 2;
 			
 			graphics.addChild(_background);
 			graphics.addChild(_fill);

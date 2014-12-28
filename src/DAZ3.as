@@ -24,11 +24,8 @@ package
 		[Embed(source = '../assets/Zombie.png')]
 		private var _zombieAsset:Class;
 		
-		[Embed(source = '../assets/Weapons.png')]
-		private var _weaponsAsset:Class;
-		
-		[Embed(source = '../assets/Pickups.png')]
-		private var _pickupsAsset:Class;
+		[Embed(source = '../assets/General.png')]
+		private var _generalAsset:Class;
 		
 		
 		public static const DEBUG_PHYSICS:Boolean = true;
@@ -42,11 +39,16 @@ package
 			library.addTexture('background', Texture.fromBitmap(new _backgroundAsset()));
 			library.addTexture('zombie', Texture.fromBitmap(new _zombieAsset()));
 			
-			library.addAtlas('guns', new TextureAtlas(Texture.fromBitmap(new _weaponsAsset()), {
-				'handgun': new Rectangle(0, 43, 27, 5)
+			library.addAtlas('guns', new TextureAtlas(Texture.fromBitmap(new _generalAsset()), {
+				'handgun': new Rectangle(1, 138, 25, 5),
+				'machinegun': new Rectangle(1, 123, 56, 6),
+				'shotgun': new Rectangle(1, 130, 54, 7),
+				'revolver': new Rectangle(0, 117, 23, 5),
+				'rocketLauncher': new Rectangle(1, 107, 37, 9),
+				'lasergun': new Rectangle(1, 95, 31, 12)
 			}));
 			
-			library.addAtlas('pickups', new TextureAtlas(Texture.fromBitmap(new _pickupsAsset()), {
+			library.addAtlas('pickups', new TextureAtlas(Texture.fromBitmap(new _generalAsset()), {
 				'handgun': new Rectangle(0, 0, 24, 16),
 				'handgunAmmo': new Rectangle(26, 1, 15, 9),
 				'machinegun': new Rectangle(0, 26, 70, 16),
@@ -60,6 +62,15 @@ package
 				'lasergun': new Rectangle(41, 0, 52, 26),
 				'lasergunAmmo': new Rectangle(95, 1, 13, 9),
 				'healthpack': new Rectangle(89, 27, 21, 21)
+			}));
+			
+			library.addAtlas('hudWeapons', new TextureAtlas(Texture.fromBitmap(new _generalAsset()), {
+				'handgun': new Rectangle(111, 1, 138, 91),
+				'machinegun': new Rectangle(111, 93, 263, 68),
+				'shotgun': new Rectangle(251, 1, 268, 44),
+				'revolver': new Rectangle(376, 93, 179, 87),
+				'rocketLauncher': new Rectangle(111, 181, 365, 83),
+				'lasergun': new Rectangle(110, 264, 211, 108)
 			}));
 			
 			loadState(new Menu());

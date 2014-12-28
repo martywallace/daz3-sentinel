@@ -4,9 +4,10 @@ package scene
 	import events.CreatureEvent;
 	import sentinel.framework.graphics.IGraphics;
 	import sentinel.gameplay.world.Being;
+	import sentinel.gameplay.world.IQueryable;
 	
 	
-	public class Creature extends Being
+	public class Creature extends Being implements IQueryable
 	{
 		
 		private var _health:int;

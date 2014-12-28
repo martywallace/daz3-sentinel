@@ -7,9 +7,10 @@ package scene
 	import sentinel.gameplay.physics.Circle;
 	import sentinel.gameplay.physics.Engine;
 	import sentinel.gameplay.world.Being;
+	import sentinel.gameplay.world.IQueryable;
 	
 	
-	public class Tree extends Being
+	public class Tree extends Being implements IQueryable
 	{
 		
 		protected override function defineGraphics():IGraphics

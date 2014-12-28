@@ -13,7 +13,7 @@ package states
 		
 		public function Gameplay()
 		{
-			var world:DAZWorld = new DAZWorld(true);
+			var world:DAZWorld = new DAZWorld(DAZ3.DEBUG_PHYSICS);
 			var hud:HUD = new HUD();
 			
 			super(world, hud);

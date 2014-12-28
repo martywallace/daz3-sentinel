@@ -12,14 +12,13 @@ package scene
 		public static const DEPTH_BACKGROUND:int = 0;
 		public static const DEPTH_CREATURES:int = 1;
 		public static const DEPTH_NATURE:int = 2;
+		public static const DEPTH_PROJECTILES:int = 3;
 		
 		
 		
 		public function DAZWorld(debugPhysics:Boolean = false)
 		{
-			super(new EngineDef(), debugPhysics ? new Debug(game, 1, 1, 0.2, new <int>[
-				Debug.CENTER_OF_MASS, Debug.SHAPE
-			]) : null);
+			super(new EngineDef(), debugPhysics ? new Debug(game, 1, 1, 0.2, DAZ3.DEBUG_PHYSICS_FEATURES) : null);
 			
 			//
 		}

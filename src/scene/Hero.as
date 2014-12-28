@@ -3,23 +3,26 @@ package scene
 	
 	import sentinel.framework.client.Keyboard;
 	import sentinel.framework.client.KeyboardState;
+	import sentinel.framework.events.MouseEvent;
 	import sentinel.framework.graphics.IGraphics;
 	import sentinel.framework.graphics.Image;
+	import sentinel.framework.graphics.MovieClip;
+	import sentinel.framework.graphics.Sprite;
 	import sentinel.gameplay.physics.Body;
 	import sentinel.gameplay.physics.Circle;
 	import sentinel.gameplay.physics.Engine;
 	import sentinel.gameplay.physics.FixtureDef;
+	import sentinel.gameplay.util.Compass;
 	import sentinel.gameplay.world.Being;
 	import sentinel.gameplay.world.IUnique;
-	import sentinel.gameplay.util.Compass;
-	import sentinel.framework.events.MouseEvent;
-	import sentinel.framework.graphics.Sprite;
+	import sentinel.gameplay.world.Query;
+	import sentinel.gameplay.world.QueryResult;
 	
 	
 	public class Hero extends Creature implements IUnique
 	{
 		
-		private var _gunGraphics:Image;
+		private var _gunGraphics:MovieClip;
 		
 		
 		public function Hero()
@@ -44,7 +47,7 @@ package scene
 			
 			graphics.depth = DAZWorld.DEPTH_CREATURES;
 			
-			_gunGraphics = library.getImageFromAtlas('weapons', 'handgun');
+			_gunGraphics = new MovieClip(library.getTexturesFromAtlas('guns'));
 			_gunGraphics.alignPivot();
 			_gunGraphics.x = 23;
 			
@@ -74,7 +77,7 @@ package scene
 		
 		protected override function defineHealth():int
 		{
-			return 100;
+			return 10000;
 		}
 		
 		
@@ -102,16 +105,28 @@ package scene
 		
 		private function _fire(event:MouseEvent):void
 		{
-			var enemies:Vector.<Being> = world.queryLine(position, position.cast(rotation, 500));
-			trace(enemies);
+			var projectile:Projectile;
+			var qr:Vector.<QueryResult> = world.query(Query.line(position, position.cast(rotation, 500), 1));
 			
-			for each(var enemy:Being in enemies)
+			if (qr.length > 0)
 			{
-				if (enemy is Enemy)
+				for each(var result:QueryResult in qr)
 				{
-					(enemy as Enemy).takeDamage(100);
+					if (result.being is Enemy)
+					{
+						(result.being as Enemy).takeDamage(100);
+					}
 				}
+				
+				projectile = new Projectile(position, qr[0].point);
 			}
+			else
+			{
+				projectile = new Projectile(position, position.cast(rotation, 500));
+			}
+			
+			
+			world.add(projectile);
 		}
 		
 		

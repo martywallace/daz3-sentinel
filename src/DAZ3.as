@@ -4,8 +4,9 @@ package
 	import flash.geom.Rectangle;
 	import sentinel.framework.Game;
 	import sentinel.framework.graphics.TextureAtlas;
-	import states.Menu;
+	import sentinel.gameplay.physics.Debug;
 	import starling.textures.Texture;
+	import states.Menu;
 	
 	
 	public class DAZ3 extends Game
@@ -27,6 +28,10 @@ package
 		private var _weaponsAsset:Class;
 		
 		
+		public static const DEBUG_PHYSICS:Boolean = true;
+		public static const DEBUG_PHYSICS_FEATURES:Vector.<int> = new <int>[Debug.CENTER_OF_MASS, Debug.SHAPE];
+		
+		
 		protected override function construct():void
 		{
 			library.addTexture('tree', Texture.fromBitmap(new _treeAsset()));
@@ -34,7 +39,7 @@ package
 			library.addTexture('background', Texture.fromBitmap(new _backgroundAsset()));
 			library.addTexture('zombie', Texture.fromBitmap(new _zombieAsset()));
 			
-			library.addAtlas('weapons', new TextureAtlas(Texture.fromBitmap(new _weaponsAsset()), {
+			library.addAtlas('guns', new TextureAtlas(Texture.fromBitmap(new _weaponsAsset()), {
 				'handgun': new Rectangle(0, 43, 27, 5)
 			}));
 			

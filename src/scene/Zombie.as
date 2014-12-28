@@ -51,7 +51,7 @@ package scene
 		
 		
 		public function get groupName():String { return 'zombies'; }
-		public function get nameInGroup():String { return 'z' + id; }
+		public function get nameInGroup():String { return 'zombie' + id; }
 		
 	}
 

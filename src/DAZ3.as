@@ -27,6 +27,9 @@ package
 		[Embed(source = '../assets/Weapons.png')]
 		private var _weaponsAsset:Class;
 		
+		[Embed(source = '../assets/Pickups.png')]
+		private var _pickupsAsset:Class;
+		
 		
 		public static const DEBUG_PHYSICS:Boolean = true;
 		public static const DEBUG_PHYSICS_FEATURES:Vector.<int> = new <int>[Debug.CENTER_OF_MASS, Debug.SHAPE];
@@ -41,6 +44,22 @@ package
 			
 			library.addAtlas('guns', new TextureAtlas(Texture.fromBitmap(new _weaponsAsset()), {
 				'handgun': new Rectangle(0, 43, 27, 5)
+			}));
+			
+			library.addAtlas('pickups', new TextureAtlas(Texture.fromBitmap(new _pickupsAsset()), {
+				'handgunAmmo': new Rectangle(26, 1, 15, 9),
+				'machinegunAmmo': new Rectangle(72, 27, 15, 9),
+				'shotgunAmmo': new Rectangle(74, 83, 15, 9),
+				'revolverAmmo': new Rectangle(28, 49, 15, 9),
+				'rocketLauncherAmmo': new Rectangle(95, 61, 15, 9),
+				'lasergunAmmo': new Rectangle(95, 1, 13, 9),
+				'handgun': new Rectangle(0, 0, 24, 16),
+				'machinegun': new Rectangle(0, 26, 70, 16),
+				'shotgun': new Rectangle(0, 82, 72, 12),
+				'revolver': new Rectangle(0, 48, 26, 12),
+				'rocketLauncher': new Rectangle(0, 60, 93, 22),
+				'lasergun': new Rectangle(41, 0, 52, 26),
+				'healthpack': new Rectangle(89, 27, 21, 21)
 			}));
 			
 			loadState(new Menu());

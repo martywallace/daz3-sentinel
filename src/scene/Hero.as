@@ -12,11 +12,13 @@ package scene
 	import sentinel.gameplay.physics.Circle;
 	import sentinel.gameplay.physics.Engine;
 	import sentinel.gameplay.physics.FixtureDef;
+	import sentinel.gameplay.physics.Vector2D;
 	import sentinel.gameplay.util.Compass;
 	import sentinel.gameplay.world.Being;
 	import sentinel.gameplay.world.IUnique;
 	import sentinel.gameplay.world.Query;
-	import sentinel.gameplay.world.QueryResult;
+	import sentinel.framework.util.Random;
+	import sentinel.gameplay.world.WorldQueryResult;
 	
 	
 	public class Hero extends Creature implements IUnique
@@ -106,11 +108,12 @@ package scene
 		private function _fire(event:MouseEvent):void
 		{
 			var projectile:Projectile;
-			var qr:Vector.<QueryResult> = world.query(Query.line(position, position.cast(rotation, 500), 1));
+			var at:Vector2D = position.cast(rotation + Random.between(-0.1, 0.1), 500);
+			var qr:Vector.<WorldQueryResult> = world.query(Query.line(position, at, 1));
 			
 			if (qr.length > 0)
 			{
-				for each(var result:QueryResult in qr)
+				for each(var result:WorldQueryResult in qr)
 				{
 					if (result.being is Enemy)
 					{
@@ -122,7 +125,7 @@ package scene
 			}
 			else
 			{
-				projectile = new Projectile(position, position.cast(rotation, 500));
+				projectile = new Projectile(position, at);
 			}
 			
 			

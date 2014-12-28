@@ -6,9 +6,10 @@ package scene
 	import sentinel.gameplay.physics.Body;
 	import sentinel.gameplay.physics.Circle;
 	import sentinel.gameplay.physics.Engine;
+	import sentinel.gameplay.world.IGroupable;
 	
 	
-	public class Zombie extends Enemy
+	public class Zombie extends Enemy implements IGroupable
 	{
 		
 		protected override function defineHealth():int
@@ -47,6 +48,10 @@ package scene
 		{
 			(world as DAZWorld).hero.takeDamage(1);
 		}
+		
+		
+		public function get groupName():String { return 'zombies'; }
+		public function get nameInGroup():String { return 'z' + id; }
 		
 	}
 

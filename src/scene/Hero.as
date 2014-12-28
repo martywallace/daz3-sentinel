@@ -1,6 +1,8 @@
 package scene
 {
 	
+	import guns.Gun;
+	import guns.Handgun;
 	import sentinel.framework.client.Keyboard;
 	import sentinel.framework.client.KeyboardState;
 	import sentinel.framework.events.MouseEvent;
@@ -12,30 +14,29 @@ package scene
 	import sentinel.gameplay.physics.Circle;
 	import sentinel.gameplay.physics.Engine;
 	import sentinel.gameplay.physics.FixtureDef;
-	import sentinel.gameplay.physics.Vector2D;
 	import sentinel.gameplay.util.Compass;
-	import sentinel.gameplay.world.Being;
 	import sentinel.gameplay.world.IUnique;
-	import sentinel.gameplay.world.Query;
-	import sentinel.framework.util.Random;
-	import sentinel.gameplay.world.WorldQueryResult;
 	
 	
 	public class Hero extends Creature implements IUnique
 	{
 		
+		private var _gun:Gun;
 		private var _gunGraphics:MovieClip;
 		
 		
 		public function Hero()
 		{
-			mouse.addEventListener(MouseEvent.LEFT_DOWN, _fire);
+			_gun = new Handgun();
+			addT(_gun);
+			
+			mouse.addEventListener(MouseEvent.LEFT_DOWN, _useGun);
 		}
 		
 		
 		public override function deconstruct():void
 		{
-			mouse.removeEventListener(MouseEvent.LEFT_DOWN, _fire);
+			mouse.removeEventListener(MouseEvent.LEFT_DOWN, _useGun);
 			super.deconstruct();
 		}
 		
@@ -111,31 +112,12 @@ package scene
 		}
 		
 		
-		private function _fire(event:MouseEvent):void
+		private function _useGun(event:MouseEvent):void
 		{
-			var projectile:Projectile;
-			var at:Vector2D = position.cast(rotation + Random.between(-0.1, 0.1), 500);
-			var qr:Vector.<WorldQueryResult> = world.query(Query.line(position, at, 1));
-			
-			if (qr.length > 0)
+			if (_gun !== null)
 			{
-				for each(var result:WorldQueryResult in qr)
-				{
-					if (result.being is Enemy)
-					{
-						(result.being as Enemy).takeDamage(100);
-					}
-				}
-				
-				projectile = new Projectile(position, qr[0].point);
+				_gun.attemptFire(this, world);
 			}
-			else
-			{
-				projectile = new Projectile(position, at);
-			}
-			
-			
-			world.add(projectile);
 		}
 		
 		
@@ -143,6 +125,9 @@ package scene
 		{
 			return 'Hero';
 		}
+		
+		
+		public function get gun():Gun { return _gun; }
 		
 	}
 	

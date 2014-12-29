@@ -89,22 +89,25 @@ package guns
 		
 		public function attemptReload():void
 		{
-			_reloadTimer = _reloadDelay;
+			if(_clipAmmo < _clipSize && _reloadTimer === 0)
+			{
+				_reloadTimer = _reloadDelay;
+			}
 		}
 		
 		
 		private function _reload():void
 		{
-			trace('reload');
+			var required:int = _clipSize - _clipAmmo;
 			
-			if (_totalAmmo <= _clipSize)
+			if (_totalAmmo <= required)
 			{
-				_totalAmmo = 0;
 				_clipAmmo = _totalAmmo;
+				_totalAmmo = 0;
 			}
 			else
 			{
-				_totalAmmo -= _clipSize;
+				_totalAmmo -= required;
 				_clipAmmo = _clipSize;
 			}
 		}
@@ -114,6 +117,12 @@ package guns
 		{
 			// Fire this weapon.
 			//
+		}
+		
+		
+		public function addAmmo(amount:int):void
+		{
+			_totalAmmo += amount;
 		}
 		
 		

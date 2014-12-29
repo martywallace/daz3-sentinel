@@ -38,7 +38,7 @@ package scene
 			mouse.addEventListener(MouseEvent.LEFT_DOWN, _gun);
 			mouse.addEventListener(MouseEvent.LEFT_UP, _gun);
 			
-			keyboard.addEventListener(KeyboardEvent.KEY_PRESSED, _nextWeapon);
+			keyboard.addEventListener(KeyboardEvent.KEY_PRESSED, _keyboard);
 		}
 		
 		
@@ -47,7 +47,7 @@ package scene
 			mouse.removeEventListener(MouseEvent.LEFT_DOWN, _gun);
 			mouse.removeEventListener(MouseEvent.LEFT_UP, _gun);
 			
-			keyboard.removeEventListener(KeyboardEvent.KEY_PRESSED, _nextWeapon);
+			keyboard.removeEventListener(KeyboardEvent.KEY_PRESSED, _keyboard);
 			
 			super.deconstruct();
 		}
@@ -55,8 +55,21 @@ package scene
 		
 		public function pickup(pickup:Pickup):void
 		{
-			// TODO: Eat pickup.
-			// ...
+			if (pickup.isAmmo)
+			{
+				for each(var gun:Gun in _guns)
+				{
+					if (gun.ammoName === pickup.type)
+					{
+						gun.addAmmo(pickup.value);
+					}
+				}
+			}
+			
+			if (pickup.type === Pickup.HEALTHPACK)
+			{
+				heal(pickup.value);
+			}
 		}
 		
 		
@@ -131,7 +144,7 @@ package scene
 		}
 		
 		
-		private function _nextWeapon(event:KeyboardEvent):void
+		private function _keyboard(event:KeyboardEvent):void
 		{
 			if (event.keyCode === Keyboard.E)
 			{
@@ -155,6 +168,11 @@ package scene
 				}
 				
 				dispatchEvent(new HeroEvent(HeroEvent.EQUIP_WEAPON));
+			}
+			
+			if (event.keyCode === Keyboard.R)
+			{
+				gun.attemptReload();
 			}
 		}
 		

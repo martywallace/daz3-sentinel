@@ -35,7 +35,7 @@ package scene
 		{
 			super.die();
 			
-			if (Random.roll(0.1))
+			if (Random.roll(0.8))
 			{
 				dropPickup();
 			}

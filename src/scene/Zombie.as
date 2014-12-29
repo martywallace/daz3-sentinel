@@ -15,7 +15,7 @@ package scene
 		
 		protected override function defineHealth():int
 		{
-			return 12;
+			return 3;
 		}
 		
 		
@@ -49,7 +49,7 @@ package scene
 		
 		protected override function definePickupTypes():Vector.<String>
 		{
-			return new <String>[Pickup.HANDGUN_AMMO, Pickup.MACHINEGUN_AMMO];
+			return new <String>[Pickup.HANDGUN_AMMO, Pickup.MACHINEGUN_AMMO, Pickup.HEALTHPACK];
 		}
 		
 		

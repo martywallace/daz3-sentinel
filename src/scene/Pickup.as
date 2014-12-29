@@ -9,6 +9,7 @@ package scene
 	import sentinel.gameplay.physics.Fixture;
 	import sentinel.gameplay.world.Being;
 	import sentinel.gameplay.events.ContactEvent;
+	import sentinel.framework.util.Random;
 	
 	
 	public class Pickup extends Being
@@ -77,6 +78,32 @@ package scene
 		
 		
 		public function get type():String { return _type; }
+		
+		
+		public function get isAmmo():Boolean
+		{
+			return type.toLowerCase().indexOf('ammo') >= 0;
+		}
+		
+		
+		public function get value():int
+		{
+			switch(type)
+			{
+				default: return 1; break;
+				
+				case HANDGUN_AMMO: return Random.between(5, 8); break;
+				case MACHINEGUN_AMMO: return Random.between(12, 20); break;
+				case SHOTGUN_AMMO: return Random.between(2, 5); break;
+				case REVOLVER_AMMO: return Random.between(1, 3); break;
+				case ROCKET_LAUNCHER_AMMO: return Random.between(1, 2); break;
+				case LASERGUN_AMMO: return Random.between(30, 45); break;
+				
+				case HEALTHPACK: return Random.between(20, 35); break;
+			}
+			
+			return 1;
+		}
 		
 	}
 	

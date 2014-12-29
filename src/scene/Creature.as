@@ -48,6 +48,14 @@ package scene
 		}
 		
 		
+		public function heal(amount:int):void
+		{
+			_health += amount;
+			
+			if (_health > _maxHealth) _health = _maxHealth;
+		}
+		
+		
 		protected function die():void
 		{
 			// Do some death stuff e.g. drop loot.

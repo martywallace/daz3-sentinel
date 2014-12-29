@@ -49,7 +49,7 @@ package scene
 		
 		protected override function definePickupTypes():Vector.<String>
 		{
-			return new <String>[Pickup.HANDGUN_AMMO, Pickup.MACHINEGUN_AMMO, Pickup.HEALTHPACK];
+			return new <String>[Pickup.HANDGUN_AMMO, Pickup.MACHINEGUN_AMMO, Pickup.SHOTGUN_AMMO, Pickup.HEALTHPACK];
 		}
 		
 		

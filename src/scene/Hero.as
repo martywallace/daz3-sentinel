@@ -5,6 +5,7 @@ package scene
 	import guns.Gun;
 	import guns.Handgun;
 	import guns.Machinegun;
+	import guns.Shotgun;
 	import sentinel.framework.client.Keyboard;
 	import sentinel.framework.client.KeyboardState;
 	import sentinel.framework.events.KeyboardEvent;
@@ -33,7 +34,7 @@ package scene
 		
 		public function Hero()
 		{
-			_guns = new <Gun>[new Handgun(), new Machinegun()];
+			_guns = new <Gun>[new Handgun(), new Machinegun(), new Shotgun()];
 			
 			mouse.addEventListener(MouseEvent.LEFT_DOWN, _gun);
 			mouse.addEventListener(MouseEvent.LEFT_UP, _gun);

@@ -1,6 +1,7 @@
 package
 {
 	
+	import flash.display.Bitmap;
 	import flash.geom.Rectangle;
 	import sentinel.framework.Game;
 	import sentinel.framework.graphics.TextureAtlas;
@@ -34,12 +35,14 @@ package
 		
 		protected override function construct():void
 		{
+			var general:Texture = Texture.fromBitmap(new _generalAsset());
+			
 			library.addTexture('tree', Texture.fromBitmap(new _treeAsset()));
 			library.addTexture('hero', Texture.fromBitmap(new _heroAsset()));
 			library.addTexture('background', Texture.fromBitmap(new _backgroundAsset()));
 			library.addTexture('zombie', Texture.fromBitmap(new _zombieAsset()));
 			
-			library.addAtlas('guns', new TextureAtlas(Texture.fromBitmap(new _generalAsset()), {
+			library.addAtlas('guns', new TextureAtlas(general, {
 				'handgun': new Rectangle(1, 138, 25, 5),
 				'machinegun': new Rectangle(1, 123, 56, 6),
 				'shotgun': new Rectangle(1, 130, 54, 7),
@@ -48,7 +51,7 @@ package
 				'lasergun': new Rectangle(1, 95, 31, 12)
 			}));
 			
-			library.addAtlas('pickups', new TextureAtlas(Texture.fromBitmap(new _generalAsset()), {
+			library.addAtlas('pickups', new TextureAtlas(general, {
 				'handgun': new Rectangle(0, 0, 24, 16),
 				'handgunAmmo': new Rectangle(26, 1, 15, 9),
 				'machinegun': new Rectangle(0, 26, 70, 16),
@@ -64,13 +67,17 @@ package
 				'healthpack': new Rectangle(89, 27, 21, 21)
 			}));
 			
-			library.addAtlas('hudWeapons', new TextureAtlas(Texture.fromBitmap(new _generalAsset()), {
+			library.addAtlas('hudWeapons', new TextureAtlas(general, {
 				'handgun': new Rectangle(111, 1, 138, 91),
 				'machinegun': new Rectangle(111, 93, 263, 68),
 				'shotgun': new Rectangle(251, 1, 268, 44),
 				'revolver': new Rectangle(376, 93, 179, 87),
 				'rocketLauncher': new Rectangle(111, 181, 365, 83),
 				'lasergun': new Rectangle(110, 264, 211, 108)
+			}));
+			
+			library.addAtlas('misc', new TextureAtlas(general, {
+				'hudCorner': new Rectangle(322, 265, 170, 120)
 			}));
 			
 			loadState(new Menu());

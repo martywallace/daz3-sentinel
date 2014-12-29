@@ -14,14 +14,12 @@ package states
 		public function Gameplay()
 		{
 			var world:DAZWorld = new DAZWorld(DAZ3.DEBUG_PHYSICS);
+			world.loadMap(new DAZMap());
+			world.hero.addEventListener(CreatureEvent.DIE, _heroDied);
+			
 			var hud:HUD = new HUD();
 			
 			super(world, hud);
-			
-			
-			world.loadMap(new DAZMap());
-			
-			world.hero.addEventListener(CreatureEvent.DIE, _heroDied);
 		}
 		
 		

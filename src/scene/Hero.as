@@ -1,14 +1,17 @@
 package scene
 {
 	
+	import events.HeroEvent;
 	import guns.Gun;
 	import guns.Handgun;
+	import guns.Machinegun;
 	import sentinel.framework.client.Keyboard;
 	import sentinel.framework.client.KeyboardState;
+	import sentinel.framework.events.KeyboardEvent;
 	import sentinel.framework.events.MouseEvent;
 	import sentinel.framework.graphics.IGraphics;
+	import sentinel.framework.graphics.IGraphicsContainer;
 	import sentinel.framework.graphics.Image;
-	import sentinel.framework.graphics.MovieClip;
 	import sentinel.framework.graphics.Sprite;
 	import sentinel.gameplay.physics.Body;
 	import sentinel.gameplay.physics.Circle;
@@ -16,27 +19,36 @@ package scene
 	import sentinel.gameplay.physics.FixtureDef;
 	import sentinel.gameplay.util.Compass;
 	import sentinel.gameplay.world.IUnique;
+	import starling.display.DisplayObject;
 	
 	
 	public class Hero extends Creature implements IUnique
 	{
 		
-		private var _gun:Gun;
-		private var _gunGraphics:MovieClip;
+		private var _currentGunIndex:int = 0;
+		private var _guns:Vector.<Gun>;
+		private var _gunGraphics:Image;
+		private var _shooting:Boolean = false;
 		
 		
 		public function Hero()
 		{
-			_gun = new Handgun();
-			addT(_gun);
+			_guns = new <Gun>[new Handgun(), new Machinegun()];
 			
-			mouse.addEventListener(MouseEvent.LEFT_DOWN, _useGun);
+			mouse.addEventListener(MouseEvent.LEFT_DOWN, _gun);
+			mouse.addEventListener(MouseEvent.LEFT_UP, _gun);
+			
+			keyboard.addEventListener(KeyboardEvent.KEY_PRESSED, _nextWeapon);
 		}
 		
 		
 		public override function deconstruct():void
 		{
-			mouse.removeEventListener(MouseEvent.LEFT_DOWN, _useGun);
+			mouse.removeEventListener(MouseEvent.LEFT_DOWN, _gun);
+			mouse.removeEventListener(MouseEvent.LEFT_UP, _gun);
+			
+			keyboard.removeEventListener(KeyboardEvent.KEY_PRESSED, _nextWeapon);
+			
 			super.deconstruct();
 		}
 		
@@ -56,7 +68,7 @@ package scene
 			
 			graphics.depth = DAZWorld.DEPTH_CREATURES;
 			
-			_gunGraphics = new MovieClip(library.getTexturesFromAtlas('guns'));
+			_gunGraphics = library.getImageFromAtlas('guns', gun.name);
 			_gunGraphics.alignPivot();
 			_gunGraphics.x = 23;
 			
@@ -86,12 +98,19 @@ package scene
 		
 		protected override function defineHealth():int
 		{
-			return 10000;
+			return 250;
 		}
 		
 		
 		protected override function update():void
 		{
+			if (gun !== null)
+			{
+				gun.update();
+				
+				if (_shooting) gun.attemptFire(this, world);
+			}
+			
 			var kbd:KeyboardState = keyboard.getState();
 			var dir:String = '';
 			
@@ -112,12 +131,37 @@ package scene
 		}
 		
 		
-		private function _useGun(event:MouseEvent):void
+		private function _nextWeapon(event:KeyboardEvent):void
 		{
-			if (_gun !== null)
+			if (event.keyCode === Keyboard.E)
 			{
-				_gun.attemptFire(this, world);
+				if (_guns.length === 1)
+				{
+					// Only have one weapon.
+					return;
+				}
+				
+				_currentGunIndex = _currentGunIndex >= _guns.length - 1 ? 0 : _currentGunIndex + 1;
+				
+				if (_gunGraphics !== null)
+				{
+					_gunGraphics.deconstruct();
+					_gunGraphics = library.getImageFromAtlas('guns', gun.name);
+					
+					_gunGraphics.alignPivot();
+					_gunGraphics.x = 23;
+					
+					(graphics as IGraphicsContainer).addChild(_gunGraphics as DisplayObject);
+				}
+				
+				dispatchEvent(new HeroEvent(HeroEvent.EQUIP_WEAPON));
 			}
+		}
+		
+		
+		private function _gun(event:MouseEvent):void
+		{
+			_shooting = event.type === MouseEvent.LEFT_DOWN;
 		}
 		
 		
@@ -127,7 +171,7 @@ package scene
 		}
 		
 		
-		public function get gun():Gun { return _gun; }
+		public function get gun():Gun { return _guns[_currentGunIndex]; }
 		
 	}
 	

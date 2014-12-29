@@ -20,11 +20,8 @@ package ui
 		{
 			var graphics:Sprite = new Sprite();
 			
-			_background = new Quad(120, 12, 0x222222);
-			_fill = new Quad(116, 8, 0x00CC33);
-			
-			_fill.x = 2;
-			_fill.y = 2;
+			_background = new Quad(80, 10, 0x111111);
+			_fill = new Quad(80, 10, 0xCC1111);
 			
 			graphics.addChild(_background);
 			graphics.addChild(_fill);

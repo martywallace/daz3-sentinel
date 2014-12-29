@@ -1,6 +1,7 @@
 package ui
 {
 	
+	import sentinel.gameplay.states.GameplayState;
 	import sentinel.gameplay.ui.UI;
 	
 	
@@ -12,10 +13,8 @@ package ui
 		private var _gunDisplay:GunDisplay;
 		
 		
-		public function HUD()
+		protected override function added(to:GameplayState):void
 		{
-			super();
-			
 			_gunDisplay = new GunDisplay();
 			_healthbar = new Healthbar();
 			_counter = new KillCounter();

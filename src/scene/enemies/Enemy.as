@@ -1,6 +1,10 @@
-package scene 
+package scene.enemies 
 {
 	
+	import scene.Hero;
+	import scene.Creature;
+	import scene.Pickup;
+	import scene.DAZWorld;
 	import sentinel.framework.util.Random;
 	
 	
@@ -35,7 +39,7 @@ package scene
 		{
 			super.die();
 			
-			if (Random.roll(0.8))
+			if (Random.roll(0.3))
 			{
 				dropPickup();
 			}

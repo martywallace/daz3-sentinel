@@ -2,11 +2,15 @@ package scene
 {
 	
 	import flash.geom.Point;
+	import scene.enemies.Enemy;
 	import sentinel.gameplay.physics.Vector2D;
 	import sentinel.gameplay.world.BoundaryBox;
 	import sentinel.gameplay.world.Map;
 	import sentinel.framework.util.Random;
 	import events.CreatureEvent;
+	import scene.enemies.Rat;
+	import scene.enemies.Zombie;
+	import sentinel.gameplay.world.Being;
 	
 	
 	public class DAZMap extends Map
@@ -33,7 +37,10 @@ package scene
 			{
 				_enemies ++;
 				
-				var zombie:Zombie = new Zombie();
+				var enemy:Enemy = Being.create('scene.enemies::' + Random.fromArray([
+					'Rat', 'Zombie'
+				])) as Enemy;
+				
 				var position:Point = Random.inRing(hero.position.x, hero.position.y, 600, 700);
 				
 				while (position.x < 1010 - 1100 / 2 || position.y < 1010 - 1500 / 2 || position.x > 1010 + 1100 / 2 || position.y > 1010 + 1500 / 2)
@@ -42,10 +49,10 @@ package scene
 					position = Random.inRing(hero.position.x, hero.position.y, 600, 700);
 				}
 				
-				zombie.moveTo(position.x, position.y);
-				zombie.addEventListener(CreatureEvent.DIE, _creatureDied);
+				enemy.moveTo(position.x, position.y);
+				enemy.addEventListener(CreatureEvent.DIE, _creatureDied);
 				
-				add(zombie);
+				add(enemy);
 			}
 		}
 		

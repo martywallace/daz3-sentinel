@@ -1,6 +1,8 @@
 package scene
 {
 	
+	import scene.enemies.Rat;
+	import scene.enemies.Zombie;
 	import sentinel.gameplay.physics.Debug;
 	import sentinel.gameplay.physics.EngineDef;
 	import sentinel.gameplay.world.World;
@@ -22,6 +24,12 @@ package scene
 			super(new EngineDef(), debugPhysics ? new Debug(game, 1, 1, 0.2, DAZ3.DEBUG_PHYSICS_FEATURES) : null);
 			
 			//
+		}
+		
+		
+		protected override function registerBeingTypes():Vector.<Class>
+		{
+			return super.registerBeingTypes().concat(new <Class>[Rat, Zombie]);
 		}
 		
 		

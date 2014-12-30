@@ -17,7 +17,8 @@ package guns
 			_totalAmmo = 2;
 			_cooldownDelay = 50;
 			_reloadDelay = 120;
-			_errorAngle = 3;
+			_errorAngle = 0.22;
+			_offset = 50;
 			
 			super(Pickup.SHOTGUN, Pickup.SHOTGUN_AMMO);
 		}
@@ -27,7 +28,7 @@ package guns
 		{
 			for (var i:int = 0; i < 8; i++)
 			{
-				fireBullet(user.position, user.rotation, world);
+				fireBullet(user.position.cast(user.rotation, _offset), user.rotation, world);
 			}
 		}
 		

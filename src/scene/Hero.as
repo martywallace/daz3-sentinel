@@ -77,7 +77,7 @@ package scene
 		protected override function defineGraphics():IGraphics
 		{
 			var graphics:Sprite = new Sprite();
-			var hero:Image = library.getImage('hero');
+			var hero:Image = library.getImageFromAtlas('all', 'hero');
 			hero.alignPivot();
 			
 			graphics.depth = DAZWorld.DEPTH_CREATURES;
@@ -96,7 +96,7 @@ package scene
 		protected override function defineBody(engine:Engine):Body
 		{
 			var body:Body = engine.createBody(Body.DYNAMIC, this);
-			body.createFixture(new Circle(20), new FixtureDef(1));
+			body.createFixture(new Circle(20), new FixtureDef(12));
 			
 			body.linearDamping = 12;
 			
@@ -104,16 +104,8 @@ package scene
 		}
 		
 		
-		protected override function defineSpeed():Number
-		{
-			return 275;
-		}
-		
-		
-		protected override function defineHealth():int
-		{
-			return 250;
-		}
+		protected override function defineSpeed():Number { return 275; }
+		protected override function defineHealth():int { return 250; }
 		
 		
 		protected override function update():void

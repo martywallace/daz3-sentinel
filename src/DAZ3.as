@@ -13,12 +13,6 @@ package
 	public class DAZ3 extends Game
 	{
 		
-		[Embed(source = '../assets/Tree.png')]
-		private var _treeAsset:Class;
-		
-		[Embed(source = '../assets/Hero.png')]
-		private var _heroAsset:Class;
-		
 		[Embed(source = '../assets/Background.jpg')]
 		private var _backgroundAsset:Class;
 		
@@ -37,10 +31,27 @@ package
 		{
 			var general:Texture = Texture.fromBitmap(new _generalAsset());
 			
-			library.addTexture('tree', Texture.fromBitmap(new _treeAsset()));
-			library.addTexture('hero', Texture.fromBitmap(new _heroAsset()));
 			library.addTexture('background', Texture.fromBitmap(new _backgroundAsset()));
 			library.addTexture('zombie', Texture.fromBitmap(new _zombieAsset()));
+			
+			library.addAtlas('all', new TextureAtlas(general, {
+				hero: new Rectangle(1, 144, 55, 50),
+				tree: new Rectangle(559, 0, 178, 176),
+				zombieHead1: new Rectangle(603, 228, 36, 37),
+				zombieHead2: new Rectangle(639, 228, 35, 42),
+				zombieHead3: new Rectangle(674, 228, 30, 37),
+				zombieShoulders1: new Rectangle(557, 271, 14, 50),
+				zombieShoulders2: new Rectangle(571, 271, 14, 50),
+				zombieShoulders3: new Rectangle(585, 271, 13, 50),
+				zombieArm1: new Rectangle(704, 229, 37, 14),
+				zombieArm2: new Rectangle(492, 271, 27, 15),
+				zombieArm3: new Rectangle(519, 272, 37, 15),
+				rat: new Rectangle(590, 181, 63, 18),
+				mummy: new Rectangle(540, 181, 50, 45),
+				acolyte: new Rectangle(653, 181, 69, 46),
+				hellhound: new Rectangle(495, 229, 108, 26),
+				hunter: new Rectangle(494, 182, 46, 35)
+			}));
 			
 			library.addAtlas('guns', new TextureAtlas(general, {
 				'handgun': new Rectangle(1, 138, 25, 5),

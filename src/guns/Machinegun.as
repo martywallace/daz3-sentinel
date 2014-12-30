@@ -14,6 +14,8 @@ package guns
 			_reloadDelay = 75;
 			_clipSize = 24;
 			_clipAmmo = 24;
+			_offset = 50;
+			_errorAngle = 0.15;
 			
 			super(Pickup.MACHINEGUN, Pickup.MACHINEGUN_AMMO);
 		}

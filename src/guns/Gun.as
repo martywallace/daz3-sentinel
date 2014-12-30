@@ -21,7 +21,8 @@ package guns
 		protected var _clipSize:int = 0;
 		protected var _reloadDelay:int = 0;
 		protected var _cooldownDelay:int = 0;
-		protected var _errorAngle:Number = 0.1;
+		protected var _errorAngle:Number = 0;
+		protected var _offset:Number = 0;
 		
 		// TODO: Weapon levels.
 		// ...
@@ -74,14 +75,15 @@ package guns
 			{
 				_cooldownTimer = _cooldownDelay;
 				
-				if (_clipAmmo <= 0)
-				{
-					attemptReload();
-				}
-				else
+				if(_clipAmmo > 0)
 				{
 					_clipAmmo -= 1;
 					fire(user, world);
+				}
+				
+				if (_clipAmmo <= 0)
+				{
+					attemptReload();
 				}
 			}
 		}

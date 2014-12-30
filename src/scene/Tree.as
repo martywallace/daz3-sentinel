@@ -15,7 +15,7 @@ package scene
 		
 		protected override function defineGraphics():IGraphics
 		{
-			var graphics:Image = library.getImage('tree');
+			var graphics:Image = library.getImageFromAtlas('all', 'tree');
 			
 			graphics.depth = DAZWorld.DEPTH_NATURE;
 			graphics.alignPivot();

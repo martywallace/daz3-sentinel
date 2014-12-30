@@ -15,6 +15,8 @@ package guns
 			_clipSize = 8;
 			_clipAmmo = 8;
 			_totalAmmo = 32;
+			_offset = 30;
+			_errorAngle = 0.1;
 			
 			super(Pickup.HANDGUN, Pickup.HANDGUN_AMMO);
 		}

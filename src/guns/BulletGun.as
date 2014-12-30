@@ -2,7 +2,7 @@ package guns
 {
 	
 	import scene.Creature;
-	import scene.Enemy;
+	import scene.enemies.Enemy;
 	import scene.Projectile;
 	import sentinel.framework.util.Random;
 	import sentinel.gameplay.physics.Vector2D;
@@ -35,8 +35,10 @@ package guns
 		{
 			var projectile:Projectile;
 			
-			var to:Vector2D = from.cast(angle + Random.between(-_errorAngle, _errorAngle), 500);
+			var error:Number = Random.between( -_errorAngle, _errorAngle);
+			var to:Vector2D = from.cast(angle + error, 500);
 			var qr:Vector.<WorldQueryResult> = world.query(Query.line(from, to, 1.5));
+			
 			
 			if (qr.length > 0)
 			{
@@ -67,7 +69,8 @@ package guns
 		 */
 		protected override function fire(user:Creature, world:World):void
 		{
-			fireBullet(user.position.cast(user.rotation, 25), user.rotation, world);
+			trace(_offset);
+			fireBullet(user.position.cast(user.rotation, _offset), user.rotation, world);
 		}
 		
 	}

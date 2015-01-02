@@ -15,8 +15,8 @@
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
-    <class path="..\Sentinel\src" />
     <class path="src" />
+    <class path="..\Sentinel\src" />
   </classpaths>
   <!-- Build options -->
   <build>
@@ -53,8 +53,7 @@
   </includeLibraries>
   <!-- SWC Libraries -->
   <libraryPaths>
-    <element path="..\Sentinel\libs\Box2D.swc" />
-    <element path="..\Sentinel\libs\starling.swc" />
+    <element path="..\Sentinel\bin\Sentinel.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>

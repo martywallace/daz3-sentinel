@@ -3,9 +3,11 @@ package scene
 	
 	import scene.enemies.Rat;
 	import scene.enemies.Zombie;
+	import scene.services.PickupService;
 	import sentinel.gameplay.physics.Debug;
 	import sentinel.gameplay.physics.EngineDef;
 	import sentinel.gameplay.world.World;
+	import sentinel.gameplay.world.WorldService;
 	
 	
 	public class DAZWorld extends World
@@ -33,6 +35,12 @@ package scene
 		}
 		
 		
+		protected override function defineServices():Vector.<WorldService>
+		{
+			return new <WorldService>[new PickupService(this)];
+		}
+		
+		
 		protected override function update():void
 		{
 			super.update();
@@ -44,6 +52,12 @@ package scene
 		public function get hero():Hero
 		{
 			return getUnique('Hero') as Hero;
+		}
+		
+		
+		public function get pickupService():PickupService
+		{
+			return getService('pickupService') as PickupService;
 		}
 		
 	}

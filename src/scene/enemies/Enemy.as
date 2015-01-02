@@ -60,19 +60,9 @@ package scene.enemies
 			
 			if (types !== null)
 			{
-				var veclocityRange:int = 120;
-				
 				var type:String = types[int(Random.between(0, types.length))];
-				var pickup:Pickup = new Pickup(type);
 				
-				world.add(pickup);
-				
-				pickup.body.linearVelocityX = Random.between(-veclocityRange, veclocityRange);
-				pickup.body.linearVelocityY = Random.between(-veclocityRange, veclocityRange);
-				pickup.body.angularVelocity = Random.between(-10, 10);
-				
-				pickup.moveTo(position.x, position.y);
-				pickup.rotation = Random.getAngle();
+				(world as DAZWorld).pickupService.make(position, type);
 			}
 		}
 		

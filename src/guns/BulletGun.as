@@ -39,7 +39,6 @@ package guns
 			var to:Vector2D = from.cast(angle + error, 500);
 			var qr:Vector.<WorldQueryResult> = world.query(Query.line(from, to, 1.5));
 			
-			
 			if (qr.length > 0)
 			{
 				for each(var result:WorldQueryResult in qr)
@@ -69,7 +68,6 @@ package guns
 		 */
 		protected override function fire(user:Creature, world:World):void
 		{
-			trace(_offset);
 			fireBullet(user.position.cast(user.rotation, _offset), user.rotation, world);
 		}
 		

@@ -1,7 +1,6 @@
 package
 {
 	
-	import flash.display.Bitmap;
 	import flash.geom.Rectangle;
 	import sentinel.framework.Game;
 	import sentinel.framework.graphics.TextureAtlas;

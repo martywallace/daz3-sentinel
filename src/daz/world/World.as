@@ -1,18 +1,18 @@
 package daz.world
 {
 	
-	import daz.DAZ3;
+	import daz.Game;
 	import daz.world.enemies.Rat;
 	import daz.world.enemies.Zombie;
 	import daz.world.services.PickupService;
 	import daz.world.services.SpawnService;
 	import sentinel.gameplay.physics.Debug;
 	import sentinel.gameplay.physics.EngineDef;
-	import sentinel.gameplay.world.World;
+	import sentinel.gameplay.world.BaseWorld;
 	import sentinel.gameplay.world.WorldService;
 	
 	
-	public class DAZWorld extends World
+	public class World extends BaseWorld
 	{
 		
 		public static const DEPTH_BACKGROUND:int = 0;
@@ -22,9 +22,9 @@ package daz.world
 		public static const DEPTH_PROJECTILES:int = 4;
 		
 		
-		public function DAZWorld(debugPhysics:Boolean = false)
+		public function World(debugPhysics:Boolean = false)
 		{
-			super(new EngineDef(), debugPhysics ? new Debug(game, 1, 1, 0.2, DAZ3.DEBUG_PHYSICS_FEATURES) : null);
+			super(new EngineDef(), debugPhysics ? new Debug(game, 1, 1, 0.2, Game.DEBUG_PHYSICS_FEATURES) : null);
 		}
 		
 		

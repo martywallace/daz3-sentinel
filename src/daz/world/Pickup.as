@@ -45,7 +45,7 @@ package daz.world
 		{
 			var graphics:Image = library.getImageFromAtlas('pickups', _type);
 			
-			graphics.depth = DAZWorld.DEPTH_PICKUPS;
+			graphics.depth = World.DEPTH_PICKUPS;
 			graphics.alignPivot();
 			
 			return graphics;

@@ -3,14 +3,14 @@ package daz.ui
 	
 	import daz.events.HeroEvent;
 	import daz.guns.Gun;
-	import daz.world.DAZWorld;
+	import daz.world.World;
 	import sentinel.framework.graphics.IGraphics;
 	import sentinel.framework.graphics.Image;
 	import sentinel.framework.graphics.Quad;
 	import sentinel.framework.graphics.Sprite;
 	import sentinel.framework.graphics.TextField;
 	import sentinel.framework.util.Align;
-	import sentinel.gameplay.ui.UI;
+	import sentinel.gameplay.ui.BaseUI;
 	import sentinel.gameplay.ui.UIElement;
 	import starling.display.DisplayObject;
 	
@@ -57,11 +57,11 @@ package daz.ui
 		}
 		
 		
-		protected override function added(ui:UI):void
+		protected override function added(ui:BaseUI):void
 		{
 			// Automatically gets removed when the Hero deconstructs.
-			(world as DAZWorld).hero.addEventListener(HeroEvent.EQUIP_WEAPON, _heroChangedGun);
-			_setGun((world as DAZWorld).hero.gun);
+			(world as World).hero.addEventListener(HeroEvent.EQUIP_WEAPON, _heroChangedGun);
+			_setGun((world as World).hero.gun);
 		}
 		
 		
@@ -111,7 +111,7 @@ package daz.ui
 			var index:int = 0;
 			for each(var bullet:Quad in _bullets)
 			{
-				if (index++ < (world as DAZWorld).hero.gun.clipAmmo)
+				if (index++ < (world as World).hero.gun.clipAmmo)
 				{
 					bullet.color = 0xFFCC00;
 				}
@@ -121,7 +121,7 @@ package daz.ui
 				}
 			}
 			
-			_ammoCounter.text = (world as DAZWorld).hero.gun.totalAmmo.toString();
+			_ammoCounter.text = (world as World).hero.gun.totalAmmo.toString();
 			_darkCounter.text = _ammoCounter.text;
 		}
 		

@@ -3,7 +3,7 @@ package daz.guns
 	
 	import daz.world.Creature;
 	import daz.world.Pickup;
-	import sentinel.gameplay.world.World;
+	import sentinel.gameplay.world.BaseWorld;
 	
 	
 	public class Shotgun extends BulletGun
@@ -24,7 +24,7 @@ package daz.guns
 		}
 		
 		
-		protected override function fire(user:Creature, world:World):void
+		protected override function fire(user:Creature, world:BaseWorld):void
 		{
 			for (var i:int = 0; i < 8; i++)
 			{

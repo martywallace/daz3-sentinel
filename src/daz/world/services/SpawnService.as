@@ -2,7 +2,7 @@ package daz.world.services
 {
 	
 	import daz.events.CreatureEvent;
-	import daz.world.DAZWorld;
+	import daz.world.World;
 	import daz.world.enemies.Enemy;
 	import daz.world.Hero;
 	import flash.geom.Point;
@@ -30,7 +30,7 @@ package daz.world.services
 		{
 			if (_enemies < _maxEnemies)
 			{
-				var hero:Hero = (world as DAZWorld).hero;
+				var hero:Hero = (world as World).hero;
 				
 				_enemies ++;
 				

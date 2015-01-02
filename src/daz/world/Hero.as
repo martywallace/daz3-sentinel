@@ -80,7 +80,7 @@ package daz.world
 			var hero:Image = library.getImageFromAtlas('all', 'hero');
 			hero.alignPivot();
 			
-			graphics.depth = DAZWorld.DEPTH_CREATURES;
+			graphics.depth = World.DEPTH_CREATURES;
 			
 			_gunGraphics = library.getImageFromAtlas('guns', gun.name);
 			_gunGraphics.alignPivot();

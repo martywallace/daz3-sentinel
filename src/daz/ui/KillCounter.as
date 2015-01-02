@@ -1,8 +1,7 @@
 package daz.ui
 {
 	
-	import daz.world.DAZMap;
-	import daz.world.DAZWorld;
+	import daz.world.World;
 	import sentinel.framework.graphics.IGraphics;
 	import sentinel.framework.graphics.Sprite;
 	import sentinel.framework.graphics.TextField;
@@ -37,7 +36,7 @@ package daz.ui
 		{
 			if (world.map !== null)
 			{
-				_counter.text = (world as DAZWorld).spawnService.remaining.toString();
+				_counter.text = (world as World).spawnService.remaining.toString();
 			}
 			
 			super.update();

@@ -7,10 +7,10 @@ package daz.world
 	import sentinel.framework.util.Random;
 	import sentinel.gameplay.world.Being;
 	import sentinel.gameplay.world.BoundaryBox;
-	import sentinel.gameplay.world.Map;
+	import sentinel.gameplay.world.BaseMap;
 	
 	
-	public class DAZMap extends Map
+	public class Map extends BaseMap
 	{
 		
 		protected override function construct():void
@@ -64,7 +64,7 @@ package daz.world
 		
 		public function get hero():Hero
 		{
-			return (world as DAZWorld).hero;
+			return (world as World).hero;
 		}
 		
 	}

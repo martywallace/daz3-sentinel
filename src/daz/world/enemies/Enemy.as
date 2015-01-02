@@ -2,7 +2,7 @@ package daz.world.enemies
 {
 	
 	import daz.world.Creature;
-	import daz.world.DAZWorld;
+	import daz.world.World;
 	import daz.world.Hero;
 	import sentinel.framework.util.Random;
 	
@@ -12,7 +12,7 @@ package daz.world.enemies
 		
 		protected override function update():void
 		{
-			var hero:Hero = (world as DAZWorld).hero;
+			var hero:Hero = (world as World).hero;
 			
 			if (hero !== null)
 			{
@@ -61,7 +61,7 @@ package daz.world.enemies
 			{
 				var type:String = types[int(Random.between(0, types.length))];
 				
-				(world as DAZWorld).pickupService.make(position, type);
+				(world as World).pickupService.make(position, type);
 			}
 		}
 		

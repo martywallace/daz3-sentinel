@@ -4,7 +4,7 @@ package daz.guns
 	import daz.world.Creature;
 	import sentinel.framework.Data;
 	import sentinel.framework.IStorable;
-	import sentinel.gameplay.world.World;
+	import sentinel.gameplay.world.BaseWorld;
 	
 	
 	public class Gun implements IStorable
@@ -69,7 +69,7 @@ package daz.guns
 		}
 		
 		
-		public function attemptFire(user:Creature, world:World):void
+		public function attemptFire(user:Creature, world:BaseWorld):void
 		{
 			if (_reloadTimer === 0 && _cooldownTimer === 0)
 			{
@@ -115,7 +115,7 @@ package daz.guns
 		}
 		
 		
-		protected function fire(user:Creature, world:World):void
+		protected function fire(user:Creature, world:BaseWorld):void
 		{
 			// Fire this weapon.
 			//

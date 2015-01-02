@@ -4,7 +4,7 @@ package daz.world.services
 	import daz.world.Pickup;
 	import sentinel.framework.util.Random;
 	import sentinel.gameplay.physics.Vector2D;
-	import sentinel.gameplay.world.World;
+	import sentinel.gameplay.world.BaseWorld;
 	import sentinel.gameplay.world.WorldService;
 	
 	

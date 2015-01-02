@@ -1,11 +1,11 @@
 package daz.states
 {
 	
-	import daz.DAZ3;
+	import daz.Game;
 	import daz.events.CreatureEvent;
 	import daz.ui.HUD;
-	import daz.world.DAZMap;
-	import daz.world.DAZWorld;
+	import daz.world.Map;
+	import daz.world.World;
 	import sentinel.testing.states.TestGameplay;
 	
 	
@@ -14,8 +14,8 @@ package daz.states
 		
 		public function Gameplay()
 		{
-			var world:DAZWorld = new DAZWorld(DAZ3.DEBUG_PHYSICS);
-			world.loadMap(new DAZMap());
+			var world:World = new World(Game.DEBUG_PHYSICS);
+			world.loadMap(new Map());
 			world.hero.addEventListener(CreatureEvent.DIE, _heroDied);
 			
 			var hud:HUD = new HUD();

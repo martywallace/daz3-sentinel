@@ -1,7 +1,7 @@
 package daz.world.enemies 
 {
 	
-	import daz.world.DAZWorld;
+	import daz.world.World;
 	import daz.world.Pickup;
 	import sentinel.framework.graphics.IGraphics;
 	import sentinel.framework.graphics.Image;
@@ -47,7 +47,7 @@ package daz.world.enemies
 			graphics.addChild(shoulders);
 			graphics.addChild(head);
 			
-			graphics.depth = DAZWorld.DEPTH_CREATURES;
+			graphics.depth = World.DEPTH_CREATURES;
 			
 			return graphics;
 		}
@@ -72,7 +72,7 @@ package daz.world.enemies
 		
 		protected override function attack():void
 		{
-			(world as DAZWorld).hero.takeDamage(1);
+			(world as World).hero.takeDamage(1);
 		}
 		
 		

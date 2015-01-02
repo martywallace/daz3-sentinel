@@ -1,7 +1,7 @@
 package daz.ui 
 {
 	
-	import daz.world.DAZWorld;
+	import daz.world.World;
 	import daz.world.Hero;
 	import sentinel.framework.graphics.IGraphics;
 	import sentinel.framework.graphics.Quad;
@@ -32,7 +32,7 @@ package daz.ui
 		
 		protected override function update():void
 		{
-			var hero:Hero = (world as DAZWorld).hero;
+			var hero:Hero = (world as World).hero;
 			
 			if (hero !== null)
 			{

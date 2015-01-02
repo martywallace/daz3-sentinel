@@ -7,7 +7,7 @@ package daz.guns
 	import sentinel.framework.util.Random;
 	import sentinel.gameplay.physics.Vector2D;
 	import sentinel.gameplay.world.Query;
-	import sentinel.gameplay.world.World;
+	import sentinel.gameplay.world.BaseWorld;
 	import sentinel.gameplay.world.WorldQueryResult;
 	
 	
@@ -31,7 +31,7 @@ package daz.guns
 		 * @param angle The angle to shoot at.
 		 * @param world The World that the bullet is being fired in.
 		 */
-		protected function fireBullet(from:Vector2D, angle:Number, world:World):void
+		protected function fireBullet(from:Vector2D, angle:Number, world:BaseWorld):void
 		{
 			var projectile:Projectile;
 			
@@ -66,7 +66,7 @@ package daz.guns
 		 * @param user The user of the Gun.
 		 * @param world The world that the Gun is being fired in.
 		 */
-		protected override function fire(user:Creature, world:World):void
+		protected override function fire(user:Creature, world:BaseWorld):void
 		{
 			fireBullet(user.position.cast(user.rotation, _offset), user.rotation, world);
 		}

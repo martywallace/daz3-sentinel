@@ -9,7 +9,7 @@ package daz
 	import daz.states.Menu;
 	
 	
-	public class DAZ3 extends BaseGame
+	public class Game extends BaseGame
 	{
 		
 		[Embed(source = '../../assets/Background.jpg')]

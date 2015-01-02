@@ -28,7 +28,7 @@ package daz.world
 		{
 			var graphics:Line = new Line(_start.toPoint(), _end.toPoint(), 2);
 			
-			graphics.depth = DAZWorld.DEPTH_PROJECTILES;
+			graphics.depth = World.DEPTH_PROJECTILES;
 			graphics.alpha = 0.5;
 			
 			return graphics;

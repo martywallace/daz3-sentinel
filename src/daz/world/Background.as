@@ -12,7 +12,7 @@ package daz.world
 		protected override function defineGraphics():IGraphics
 		{
 			var graphics:Image =  library.getImage('background');
-			graphics.depth = DAZWorld.DEPTH_BACKGROUND;
+			graphics.depth = World.DEPTH_BACKGROUND;
 			
 			return graphics;
 		}

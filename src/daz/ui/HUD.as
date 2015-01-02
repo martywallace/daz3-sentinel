@@ -2,10 +2,10 @@ package daz.ui
 {
 	
 	import sentinel.gameplay.states.GameplayState;
-	import sentinel.gameplay.ui.UI;
+	import sentinel.gameplay.ui.BaseUI;
 	
 	
-	public class HUD extends UI
+	public class HUD extends BaseUI
 	{
 		
 		private var _healthbar:Healthbar;

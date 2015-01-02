@@ -12,7 +12,7 @@ package daz
 		
 		public function Main()
 		{
-			super(DAZ3, 2, true);
+			super(Game, 2, true);
 		}
 		
 	}

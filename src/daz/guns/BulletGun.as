@@ -37,7 +37,7 @@ package daz.guns
 			
 			var error:Number = Random.between( -_errorAngle, _errorAngle);
 			var to:Vector2D = from.cast(angle + error, 500);
-			var qr:Vector.<WorldQueryResult> = world.query(Query.line(from, to, 1.5));
+			var qr:Vector.<WorldQueryResult> = world.query(Query.line(from, to, 2.5));
 			
 			if (qr.length > 0)
 			{

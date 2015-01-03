@@ -22,7 +22,7 @@ package daz
 		private var _generalAsset:Class;
 		
 		
-		public static const DEBUG_PHYSICS:Boolean = true;
+		public static const DEBUG_PHYSICS:Boolean = false;
 		public static const DEBUG_PHYSICS_FEATURES:Vector.<int> = new <int>[Debug.CENTER_OF_MASS, Debug.SHAPE];
 		
 		

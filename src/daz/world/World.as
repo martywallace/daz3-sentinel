@@ -20,11 +20,14 @@ package daz.world
 		public static const DEPTH_CREATURES:int = 2;
 		public static const DEPTH_NATURE:int = 3;
 		public static const DEPTH_PROJECTILES:int = 4;
+		public static const DEPTH_OVERLAY:int = 5;
 		
 		
 		public function World(debugPhysics:Boolean = false)
 		{
 			super(new EngineDef(), debugPhysics ? new Debug(game, 1, 1, 0.2, Game.DEBUG_PHYSICS_FEATURES) : null);
+			
+			camera.rotation = -0.04;
 		}
 		
 		

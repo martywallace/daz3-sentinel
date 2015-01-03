@@ -29,7 +29,7 @@ package daz.world
 		protected override function defineBody(engine:Engine):Body
 		{
 			var body:Body = engine.createBody(Body.STATIC, this);
-			body.createFixture(new Circle(40));
+			body.createFixture(new Circle(52));
 			
 			return body;
 		}

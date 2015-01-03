@@ -96,8 +96,9 @@ package daz.world
 		protected override function defineBody(engine:Engine):Body
 		{
 			var body:Body = engine.createBody(Body.DYNAMIC, this);
-			body.createFixture(new Circle(20), new FixtureDef(12));
 			
+			body.createFixture(new Circle(20), new FixtureDef(12));
+			body.fixedRotation = true;
 			body.linearDamping = 12;
 			
 			return body;

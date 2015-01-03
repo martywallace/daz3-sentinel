@@ -24,7 +24,7 @@ package daz.world
 		
 		private function _addBoundary():void
 		{
-			var boundary:BoundaryBox = new BoundaryBox(1100, 1500);
+			var boundary:Bounds = new Bounds();
 			
 			boundary.moveTo(1010, 1010);
 			add(boundary);
@@ -50,7 +50,7 @@ package daz.world
 		
 		private function _addTrees():void
 		{
-			for (var i:int = 0; i < 10; i++)
+			for (var i:int = 0; i < 16; i++)
 			{
 				var tree:Tree = new Tree();
 				var position:Point = Random.inRectangle(0, 0, 2020, 2020);

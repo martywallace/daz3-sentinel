@@ -9,26 +9,23 @@ package daz.guns
 	public class Shotgun extends BulletGun
 	{
 		
-		public function Shotgun()
-		{
-			_damage = 1;
-			_clipSize = 4;
-			_clipAmmo = 4;
-			_totalAmmo = 2;
-			_cooldownDelay = 50;
-			_reloadDelay = 120;
-			_errorAngle = 0.22;
-			_offset = 50;
-			
-			super(Pickup.SHOTGUN, Pickup.SHOTGUN_AMMO);
-		}
+		protected override function defineName():String { return Pickup.SHOTGUN; }
+		protected override function defineAmmoName():String { return Pickup.SHOTGUN_AMMO; }
+		
+		protected override function defineDamage():int { return 1; }
+		protected override function defineCooldownDelay():int { return 50; }
+		protected override function defineReloadDelay():int { return 120; }
+		protected override function defineClipSize():int { return 4; }
+		protected override function defineTotalAmmo():int { return 4; }
+		protected override function defineOffset():Number { return 50; }
+		protected override function defineErrorAngle():Number { return 0.22; }
 		
 		
 		protected override function fire(user:Creature, world:BaseWorld):void
 		{
 			for (var i:int = 0; i < 8; i++)
 			{
-				fireBullet(user.position.cast(user.rotation, _offset), user.rotation, world);
+				fireBullet(user.position.cast(user.rotation, offset), user.rotation, world);
 			}
 		}
 		

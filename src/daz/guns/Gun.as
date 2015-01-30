@@ -10,29 +10,47 @@ package daz.guns
 	public class Gun implements IStorable
 	{
 		
-		private var _name:String;
-		private var _ammoName:String;
 		private var _reloadTimer:int = 0;
 		private var _cooldownTimer:int = 0;
 		
-		protected var _damage:int = 0;
-		protected var _totalAmmo:int = 0;
-		protected var _clipAmmo:int = 0;
-		protected var _clipSize:int = 0;
-		protected var _reloadDelay:int = 0;
-		protected var _cooldownDelay:int = 0;
-		protected var _errorAngle:Number = 0;
-		protected var _offset:Number = 0;
+		private var _name:String;
+		private var _ammoName:String;
+		private var _damage:int;
+		private var _totalAmmo:int;
+		private var _clipAmmo:int;
+		private var _clipSize:int;
+		private var _reloadDelay:int;
+		private var _cooldownDelay:int;
+		private var _errorAngle:Number;
+		private var _offset:Number;
 		
-		// TODO: Weapon levels.
-		// ...
 		
-		
-		public function Gun(name:String, ammoName:String)
+		public function Gun()
 		{
-			_name = name;
-			_ammoName = ammoName;
+			_name = defineName();
+			_ammoName = defineAmmoName();
+			_damage = defineDamage();
+			_totalAmmo = defineTotalAmmo();
+			_clipAmmo = defineClipAmmo();
+			_clipSize = defineClipSize();
+			_reloadDelay = defineReloadDelay();
+			_cooldownDelay = defineCooldownDelay();
+			_errorAngle = defineErrorAngle();
+			_offset = defineOffset();
 		}
+		
+		
+		protected function defineName():String { return null; }
+		protected function defineAmmoName():String { return null; }
+		
+		protected function defineDamage():int { return 0; }
+		protected function defineTotalAmmo():int { return 0; }
+		protected function defineClipAmmo():int { return 0; }
+		protected function defineClipSize():int { return 0; }
+		protected function defineReloadDelay():int { return 0; }
+		protected function defineCooldownDelay():int { return 0; }
+		protected function defineErrorAngle():Number { return 0; }
+		protected function defineOffset():Number { return 0; }
 		
 		
 		public function save():Data
@@ -130,9 +148,14 @@ package daz.guns
 		
 		public function get name():String { return _name; }
 		public function get ammoName():String { return _ammoName; }
-		public function get clipSize():int { return _clipSize; }
-		public function get clipAmmo():int { return _clipAmmo; }
+		public function get damage():int { return _damage; }
 		public function get totalAmmo():int { return _totalAmmo; }
+		public function get clipAmmo():int { return _clipAmmo; }
+		public function get clipSize():int { return _clipSize; }
+		public function get reloadDelay():int { return _reloadDelay; }
+		public function get cooldownDelay():int { return _cooldownDelay; }
+		public function get errorAngle():Number { return _errorAngle; }
+		public function get offset():Number { return _offset; }
 		
 	}
 	

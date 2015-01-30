@@ -1,12 +1,12 @@
 package daz
 {
 	
+	import daz.states.Menu;
 	import flash.geom.Rectangle;
 	import sentinel.framework.BaseGame;
-	import sentinel.framework.graphics.TextureAtlas;
+	import sentinel.framework.graphics.Sheet;
 	import sentinel.gameplay.physics.Debug;
 	import starling.textures.Texture;
-	import daz.states.Menu;
 	
 	
 	public class Game extends BaseGame
@@ -22,7 +22,7 @@ package daz
 		private var _generalAsset:Class;
 		
 		
-		public static const DEBUG_PHYSICS:Boolean = false;
+		public static const DEBUG_PHYSICS:Boolean = true;
 		public static const DEBUG_PHYSICS_FEATURES:Vector.<int> = new <int>[Debug.CENTER_OF_MASS, Debug.SHAPE];
 		
 		
@@ -33,7 +33,7 @@ package daz
 			library.addTexture('background', Texture.fromBitmap(new _backgroundAsset()));
 			library.addTexture('zombie', Texture.fromBitmap(new _zombieAsset()));
 			
-			library.addAtlas('all', new TextureAtlas(general, {
+			library.addSheet('all', new Sheet(general, {
 				hero: new Rectangle(1, 144, 55, 50),
 				tree: new Rectangle(559, 0, 178, 176),
 				zombieHead1: new Rectangle(603, 228, 36, 37),
@@ -52,7 +52,7 @@ package daz
 				hunter: new Rectangle(494, 182, 46, 35)
 			}));
 			
-			library.addAtlas('guns', new TextureAtlas(general, {
+			library.addSheet('guns', new Sheet(general, {
 				'handgun': new Rectangle(1, 138, 25, 5),
 				'machinegun': new Rectangle(1, 123, 56, 6),
 				'shotgun': new Rectangle(1, 130, 54, 7),
@@ -61,7 +61,7 @@ package daz
 				'lasergun': new Rectangle(1, 95, 31, 12)
 			}));
 			
-			library.addAtlas('pickups', new TextureAtlas(general, {
+			library.addSheet('pickups', new Sheet(general, {
 				'handgun': new Rectangle(0, 0, 24, 16),
 				'handgunAmmo': new Rectangle(26, 1, 15, 9),
 				'machinegun': new Rectangle(0, 26, 70, 16),
@@ -77,7 +77,7 @@ package daz
 				'healthpack': new Rectangle(89, 27, 21, 21)
 			}));
 			
-			library.addAtlas('hudWeapons', new TextureAtlas(general, {
+			library.addSheet('hudWeapons', new Sheet(general, {
 				'handgun': new Rectangle(111, 1, 138, 91),
 				'machinegun': new Rectangle(111, 93, 263, 68),
 				'shotgun': new Rectangle(251, 1, 268, 44),
@@ -86,7 +86,7 @@ package daz
 				'lasergun': new Rectangle(110, 264, 211, 108)
 			}));
 			
-			library.addAtlas('misc', new TextureAtlas(general, {
+			library.addSheet('misc', new Sheet(general, {
 				'hudCorner': new Rectangle(322, 265, 170, 120)
 			}));
 			

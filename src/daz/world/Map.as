@@ -8,6 +8,7 @@ package daz.world
 	import sentinel.gameplay.world.Being;
 	import sentinel.gameplay.world.BoundaryBox;
 	import sentinel.gameplay.world.BaseMap;
+	import sentinel.gameplay.physics.Vector2D;
 	
 	
 	public class Map extends BaseMap
@@ -53,9 +54,7 @@ package daz.world
 			for (var i:int = 0; i < 16; i++)
 			{
 				var tree:Tree = new Tree();
-				var position:Point = Random.inRectangle(0, 0, 2020, 2020);
-				
-				tree.moveTo(position.x, position.y);
+				tree.position = Vector2D.fromPoint(Random.inRectangle(0, 0, 2020, 2020));
 				
 				add(tree);
 			}

@@ -29,7 +29,7 @@ package daz.world.enemies
 		protected override function defineBody(engine:Engine):Body
 		{
 			var body:Body = engine.createBody(Body.DYNAMIC, this);
-			body.createFixture(new Box(40, 12), new FixtureDef(1500));
+			body.createFixture(new Box(40, 12), new FixtureDef(1000));
 			
 			return body;
 		}

@@ -16,7 +16,6 @@
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
     <class path="src" />
-    <class path="..\Sentinel\src" />
   </classpaths>
   <!-- Build options -->
   <build>
@@ -49,11 +48,11 @@
   </build>
   <!-- SWC Include Libraries -->
   <includeLibraries>
-    <!-- example: <element path="..." /> -->
+    <element path="C:\Users\User\Documents\ActionScript\Projects\Sentinel\bin\Sentinel.swc" />
   </includeLibraries>
   <!-- SWC Libraries -->
   <libraryPaths>
-    <element path="..\Sentinel\bin\Sentinel.swc" />
+    <!-- example: <element path="..." /> -->
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>

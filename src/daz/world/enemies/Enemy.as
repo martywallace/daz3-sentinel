@@ -1,6 +1,7 @@
 package daz.world.enemies 
 {
 	
+	import daz.ui.EnemyHealthbar;
 	import daz.world.Creature;
 	import daz.world.World;
 	import daz.world.Hero;
@@ -9,6 +10,9 @@ package daz.world.enemies
 	
 	public class Enemy extends Creature
 	{
+		
+		private var _healthbar:EnemyHealthbar;
+		
 		
 		protected override function update():void
 		{
@@ -34,9 +38,26 @@ package daz.world.enemies
 		}
 		
 		
+		public override function takeDamage(amount:int):void
+		{
+			if (_healthbar === null)
+			{
+				// Make healthbar.
+				_healthbar = (world as World).healthbarService.make(this);
+			}
+			
+			super.takeDamage(amount);
+		}
+		
+		
 		protected override function die():void
 		{
 			super.die();
+			
+			if (_healthbar !== null)
+			{
+				_healthbar.deconstruct();
+			}
 			
 			if (Random.roll(0.3))
 			{

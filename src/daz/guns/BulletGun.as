@@ -6,8 +6,8 @@ package daz.guns
 	import daz.world.Projectile;
 	import sentinel.framework.util.Random;
 	import sentinel.gameplay.physics.Vector2D;
-	import sentinel.gameplay.world.Query;
 	import sentinel.gameplay.world.BaseWorld;
+	import sentinel.gameplay.world.Query;
 	import sentinel.gameplay.world.WorldQueryResult;
 	
 	
@@ -17,12 +17,6 @@ package daz.guns
 	 */
 	public class BulletGun extends Gun
 	{
-		
-		public function BulletGun(name:String, ammoName:String)
-		{
-			super(name, ammoName);
-		}
-		
 		
 		/**
 		 * Fire a single bullet - a line cast from the player which damages the first Creature that
@@ -35,9 +29,9 @@ package daz.guns
 		{
 			var projectile:Projectile;
 			
-			var error:Number = Random.between( -_errorAngle, _errorAngle);
+			var error:Number = Random.between(-errorAngle, errorAngle);
 			var to:Vector2D = from.cast(angle + error, 500);
-			var qr:Vector.<WorldQueryResult> = world.query(Query.line(from, to, 2.5));
+			var qr:Vector.<WorldQueryResult> = world.query(Query.line(from, to, 1));
 			
 			if (qr.length > 0)
 			{
@@ -45,7 +39,7 @@ package daz.guns
 				{
 					if (result.being is Enemy)
 					{
-						(result.being as Enemy).takeDamage(_damage);
+						(result.being as Enemy).takeDamage(damage);
 					}
 				}
 				
@@ -68,7 +62,7 @@ package daz.guns
 		 */
 		protected override function fire(user:Creature, world:BaseWorld):void
 		{
-			fireBullet(user.position.cast(user.rotation, _offset), user.rotation, world);
+			fireBullet(user.position.cast(user.rotation, offset), user.rotation, world);
 		}
 		
 	}

@@ -5,8 +5,9 @@ package daz.world.services
 	import daz.world.enemies.Enemy;
 	import daz.world.Hero;
 	import daz.world.World;
-	import flash.geom.Point;
+	import starling.geom.Point;
 	import sentinel.framework.util.Random;
+	import sentinel.gameplay.physics.Vector2D;
 	import sentinel.gameplay.world.Being;
 	import sentinel.gameplay.world.WorldService;
 	
@@ -40,7 +41,7 @@ package daz.world.services
 					position = Random.inRing(hero.position.x, hero.position.y, 600, 700);
 				}
 				
-				enemy.moveTo(position.x, position.y);
+				enemy.position = Vector2D.fromPoint(position);
 				enemy.addEventListener(CreatureEvent.DIE, _creatureDied);
 				
 				world.add(enemy);

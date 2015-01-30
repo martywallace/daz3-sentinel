@@ -57,7 +57,7 @@ package daz.world.enemies
 		{
 			var body:Body = engine.createBody(Body.DYNAMIC, this);
 			
-			body.createFixture(new Circle(20), new FixtureDef(0.5));
+			body.createFixture(new Circle(20), new FixtureDef(1500));
 			body.linearDamping = 8;
 			
 			return body;

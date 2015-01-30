@@ -7,19 +7,16 @@ package daz.guns
 	public class Handgun extends BulletGun
 	{
 		
-		public function Handgun()
-		{
-			_damage = 2;
-			_cooldownDelay = 32;
-			_reloadDelay = 50;
-			_clipSize = 8;
-			_clipAmmo = 8;
-			_totalAmmo = 32;
-			_offset = 30;
-			_errorAngle = 0.1;
-			
-			super(Pickup.HANDGUN, Pickup.HANDGUN_AMMO);
-		}
+		protected override function defineName():String { return Pickup.HANDGUN; }
+		protected override function defineAmmoName():String { return Pickup.HANDGUN_AMMO; }
+		
+		protected override function defineDamage():int { return 2; }
+		protected override function defineCooldownDelay():int { return 32; }
+		protected override function defineReloadDelay():int { return 50; }
+		protected override function defineClipSize():int { return 8; }
+		protected override function defineTotalAmmo():int { return 32; }
+		protected override function defineOffset():Number { return 30; }
+		protected override function defineErrorAngle():Number { return 0.1; }
 		
 	}
 	

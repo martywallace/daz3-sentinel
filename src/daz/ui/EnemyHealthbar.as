@@ -26,6 +26,25 @@ package daz.ui
 		}
 		
 		
+		public function show(duration:int = 90):void
+		{
+			if (graphics)
+			{
+				_timer = duration;
+				graphics.visible = true;
+			}
+		}
+		
+		
+		public function hide():void
+		{
+			if (graphics)
+			{
+				graphics.visible = false;
+			}
+		}
+		
+		
 		protected override function defineGraphics():IGraphics
 		{
 			var graphics:Sprite = new Sprite();
@@ -50,7 +69,7 @@ package daz.ui
 			
 			if (--_timer < 0)
 			{
-				deconstruct();
+				hide();
 			}
 			
 			super.update();

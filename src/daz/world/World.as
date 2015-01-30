@@ -4,7 +4,6 @@ package daz.world
 	import daz.Game;
 	import daz.world.enemies.Rat;
 	import daz.world.enemies.Zombie;
-	import daz.world.services.HealthbarService;
 	import daz.world.services.PickupService;
 	import daz.world.services.SpawnService;
 	import sentinel.gameplay.physics.Debug;
@@ -40,7 +39,7 @@ package daz.world
 		
 		protected override function defineServices():Vector.<WorldService>
 		{
-			return new <WorldService>[new PickupService(), new SpawnService(), new HealthbarService()];
+			return new <WorldService>[new PickupService(), new SpawnService()];
 		}
 		
 		
@@ -57,7 +56,6 @@ package daz.world
 		
 		public function get pickupService():PickupService { return getService('pickupService') as PickupService; }
 		public function get spawnService():SpawnService { return getService('spawnService') as SpawnService; }
-		public function get healthbarService():HealthbarService { return getService('healthbarService') as HealthbarService; }
 		
 	}
 	

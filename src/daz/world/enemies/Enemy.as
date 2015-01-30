@@ -43,8 +43,11 @@ package daz.world.enemies
 			if (_healthbar === null)
 			{
 				// Make healthbar.
-				_healthbar = (world as World).healthbarService.make(this);
+				_healthbar = new EnemyHealthbar(this);
+				world.add(_healthbar);
 			}
+			
+			_healthbar.show();
 			
 			super.takeDamage(amount);
 		}

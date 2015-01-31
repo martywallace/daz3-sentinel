@@ -6,6 +6,7 @@ package daz.world
 	import daz.guns.Handgun;
 	import daz.guns.Machinegun;
 	import daz.guns.Shotgun;
+	import daz.world.services.Inventory;
 	import sentinel.framework.client.Keyboard;
 	import sentinel.framework.client.KeyboardState;
 	import sentinel.framework.events.KeyboardEvent;
@@ -19,6 +20,7 @@ package daz.world
 	import sentinel.gameplay.physics.Engine;
 	import sentinel.gameplay.physics.FixtureDef;
 	import sentinel.gameplay.util.Compass;
+	import sentinel.gameplay.world.BeingService;
 	import sentinel.gameplay.world.IUnique;
 	import starling.display.DisplayObject;
 	
@@ -27,14 +29,13 @@ package daz.world
 	{
 		
 		private var _currentGunIndex:int = 0;
-		private var _guns:Vector.<Gun>;
 		private var _gunGraphics:Image;
 		private var _shooting:Boolean = false;
 		
 		
 		public function Hero()
 		{
-			_guns = new <Gun>[new Handgun(), new Machinegun(), new Shotgun()];
+			super();
 			
 			mouse.addEventListener(MouseEvent.LEFT_DOWN, _gun);
 			mouse.addEventListener(MouseEvent.LEFT_UP, _gun);
@@ -58,7 +59,7 @@ package daz.world
 		{
 			if (pickup.isAmmo)
 			{
-				for each(var gun:Gun in _guns)
+				for each(var gun:Gun in inventory.guns)
 				{
 					if (gun.ammoName === pickup.type)
 					{
@@ -105,6 +106,12 @@ package daz.world
 		}
 		
 		
+		protected override function defineServices():Vector.<BeingService>
+		{
+			return new <BeingService>[new Inventory()];
+		}
+		
+		
 		protected override function defineSpeed():Number { return 275; }
 		protected override function defineHealth():int { return 250; }
 		
@@ -142,13 +149,13 @@ package daz.world
 		{
 			if (event.keyCode === Keyboard.E)
 			{
-				if (_guns.length === 1)
+				if (inventory.guns.length === 1)
 				{
 					// Only have one weapon.
 					return;
 				}
 				
-				_currentGunIndex = _currentGunIndex >= _guns.length - 1 ? 0 : _currentGunIndex + 1;
+				_currentGunIndex = _currentGunIndex >= inventory.guns.length - 1 ? 0 : _currentGunIndex + 1;
 				
 				if (_gunGraphics !== null)
 				{
@@ -183,7 +190,8 @@ package daz.world
 		}
 		
 		
-		public function get gun():Gun { return _guns[_currentGunIndex]; }
+		public function get gun():Gun { return inventory.guns[_currentGunIndex]; }
+		public function get inventory():Inventory { return getService('inventory') as Inventory; }
 		
 	}
 	

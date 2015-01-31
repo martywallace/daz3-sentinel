@@ -31,12 +31,6 @@ package daz.world
 		}
 		
 		
-		protected override function registerBeingTypes():Vector.<Class>
-		{
-			return super.registerBeingTypes().concat(new <Class>[Rat, Zombie]);
-		}
-		
-		
 		protected override function defineServices():Vector.<WorldService>
 		{
 			return new <WorldService>[new PickupService(), new SpawnService()];

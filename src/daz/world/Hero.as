@@ -3,9 +3,6 @@ package daz.world
 	
 	import daz.events.HeroEvent;
 	import daz.guns.Gun;
-	import daz.guns.Handgun;
-	import daz.guns.Machinegun;
-	import daz.guns.Shotgun;
 	import daz.world.services.Inventory;
 	import sentinel.framework.client.Keyboard;
 	import sentinel.framework.client.KeyboardState;
@@ -28,7 +25,6 @@ package daz.world
 	public class Hero extends Creature implements IUnique
 	{
 		
-		private var _currentGunIndex:int = 0;
 		private var _gunGraphics:Image;
 		private var _shooting:Boolean = false;
 		
@@ -59,13 +55,7 @@ package daz.world
 		{
 			if (pickup.isAmmo)
 			{
-				for each(var gun:Gun in inventory.guns)
-				{
-					if (gun.ammoName === pickup.type)
-					{
-						gun.addAmmo(pickup.value);
-					}
-				}
+				inventory.addAmmo(pickup);
 			}
 			
 			if (pickup.type === Pickup.HEALTHPACK)
@@ -83,7 +73,7 @@ package daz.world
 			
 			graphics.depth = World.DEPTH_CREATURES;
 			
-			_gunGraphics = library.getImageFromAtlas('guns', gun.name);
+			_gunGraphics = library.getImageFromAtlas('guns', inventory.currentGun.name);
 			_gunGraphics.alignPivot();
 			_gunGraphics.x = 23;
 			
@@ -118,11 +108,11 @@ package daz.world
 		
 		protected override function update():void
 		{
-			if (gun !== null)
+			if (inventory.currentGun !== null)
 			{
-				gun.update();
+				inventory.currentGun.update();
 				
-				if (_shooting) gun.attemptFire(this, world);
+				if (_shooting) inventory.currentGun.attemptFire(this, world);
 			}
 			
 			var kbd:KeyboardState = keyboard.getState();
@@ -149,31 +139,17 @@ package daz.world
 		{
 			if (event.keyCode === Keyboard.E)
 			{
-				if (inventory.guns.length === 1)
-				{
-					// Only have one weapon.
-					return;
-				}
+				inventory.next();
 				
-				_currentGunIndex = _currentGunIndex >= inventory.guns.length - 1 ? 0 : _currentGunIndex + 1;
-				
-				if (_gunGraphics !== null)
-				{
-					_gunGraphics.deconstruct();
-					_gunGraphics = library.getImageFromAtlas('guns', gun.name);
-					
-					_gunGraphics.alignPivot();
-					_gunGraphics.x = 23;
-					
-					(graphics as IGraphicsContainer).addChild(_gunGraphics as DisplayObject);
-				}
+				_gunGraphics = _gunGraphics.replace(library.getImageFromAtlas('guns', inventory.currentGun.name))
+				_gunGraphics.alignPivot();
 				
 				dispatchEvent(new HeroEvent(HeroEvent.EQUIP_WEAPON));
 			}
 			
 			if (event.keyCode === Keyboard.R)
 			{
-				gun.attemptReload();
+				inventory.currentGun.attemptReload();
 			}
 		}
 		
@@ -190,7 +166,6 @@ package daz.world
 		}
 		
 		
-		public function get gun():Gun { return inventory.guns[_currentGunIndex]; }
 		public function get inventory():Inventory { return getService('inventory') as Inventory; }
 		
 	}

@@ -61,13 +61,13 @@ package daz.ui
 		{
 			// Automatically gets removed when the Hero deconstructs.
 			(world as World).hero.addEventListener(HeroEvent.EQUIP_WEAPON, _heroChangedGun);
-			_setGun((world as World).hero.gun);
+			_setGun((world as World).hero.inventory.currentGun);
 		}
 		
 		
 		private function _heroChangedGun(event:HeroEvent):void
 		{
-			_setGun(event.hero.gun);
+			_setGun(event.hero.inventory.currentGun);
 		}
 		
 		
@@ -100,9 +100,6 @@ package daz.ui
 			
 			_ammoDisplay.x = -100;
 			_ammoDisplay.y = -20;
-			
-			//_ammoDisplay.x = viewport.width - _ammoDisplay.width - 100;
-			//_ammoDisplay.y = viewport.height - 100;
 		}
 		
 		
@@ -111,7 +108,7 @@ package daz.ui
 			var index:int = 0;
 			for each(var bullet:Quad in _bullets)
 			{
-				if (index++ < (world as World).hero.gun.clipAmmo)
+				if (index++ < (world as World).hero.inventory.currentGun.clipAmmo)
 				{
 					bullet.color = 0xFFCC00;
 				}
@@ -121,7 +118,7 @@ package daz.ui
 				}
 			}
 			
-			_ammoCounter.text = (world as World).hero.gun.totalAmmo.toString();
+			_ammoCounter.text = (world as World).hero.inventory.currentGun.totalAmmo.toString();
 			_darkCounter.text = _ammoCounter.text;
 		}
 		

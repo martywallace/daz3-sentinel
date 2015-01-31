@@ -53,14 +53,17 @@ package daz.world
 		
 		public function pickup(pickup:Pickup):void
 		{
-			if (pickup.isAmmo)
+			if (pickup.isAmmo || pickup.isGun)
 			{
-				inventory.addAmmo(pickup);
+				inventory.add(pickup);
 			}
-			
-			if (pickup.type === Pickup.HEALTHPACK)
+			else
 			{
-				heal(pickup.value);
+				// Utility types (healthpack, etc).
+				if (pickup.type === Pickup.HEALTHPACK)
+				{
+					heal(pickup.value);
+				}
 			}
 		}
 		

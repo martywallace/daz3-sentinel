@@ -1,15 +1,19 @@
 package daz.world
 {
 	
+	import daz.guns.Gun;
+	import daz.guns.Handgun;
+	import daz.guns.Machinegun;
+	import daz.guns.Shotgun;
 	import sentinel.framework.graphics.IGraphics;
 	import sentinel.framework.graphics.Image;
+	import sentinel.framework.util.Random;
+	import sentinel.gameplay.events.ContactEvent;
 	import sentinel.gameplay.physics.Body;
 	import sentinel.gameplay.physics.Box;
 	import sentinel.gameplay.physics.Engine;
 	import sentinel.gameplay.physics.Fixture;
 	import sentinel.gameplay.world.Being;
-	import sentinel.gameplay.events.ContactEvent;
-	import sentinel.framework.util.Random;
 	
 	
 	public class Pickup extends Being
@@ -28,6 +32,10 @@ package daz.world
 		public static const LASERGUN:String = 'lasergun';
 		public static const LASERGUN_AMMO:String = 'lasergunAmmo';
 		public static const HEALTHPACK:String = 'healthpack';
+		
+		private static const GUN_TYPES:Array = [HANDGUN, MACHINEGUN, SHOTGUN, REVOLVER, ROCKET_LAUNCHER, LASERGUN];
+		private static const AMMO_TYPES:Array = [HANDGUN_AMMO, MACHINEGUN_AMMO, SHOTGUN_AMMO, ROCKET_LAUNCHER_AMMO, LASERGUN_AMMO];
+		private static const UTILITY_TYPES:Array = [HEALTHPACK];
 		
 		
 		private var _type:String;
@@ -67,6 +75,21 @@ package daz.world
 		}
 		
 		
+		public function toNewGun():Gun
+		{
+			var gun:Gun = null;
+			
+			switch(_type)
+			{
+				case HANDGUN: gun = new Handgun(); break;
+				case MACHINEGUN: gun = new Machinegun(); break;
+				case SHOTGUN: gun = new Shotgun(); break;
+			}
+			
+			return gun;
+		}
+		
+		
 		private function _touchHero(event:ContactEvent):void
 		{
 			if (event.externalOwner === world.getUnique('Hero'))
@@ -80,10 +103,9 @@ package daz.world
 		public function get type():String { return _type; }
 		
 		
-		public function get isAmmo():Boolean
-		{
-			return type.toLowerCase().indexOf('ammo') >= 0;
-		}
+		public function get isAmmo():Boolean { return AMMO_TYPES.indexOf(_type) >= 0; }
+		public function get isGun():Boolean { return GUN_TYPES.indexOf(_type) >= 0; }
+		public function get isUtility():Boolean { return UTILITY_TYPES.indexOf(_type) >= 0; }
 		
 		
 		public function get value():int

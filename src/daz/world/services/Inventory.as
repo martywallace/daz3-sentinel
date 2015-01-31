@@ -1,13 +1,13 @@
 package daz.world.services
 {
 	
+	import daz.guns.Gun;
 	import daz.guns.Handgun;
 	import daz.guns.Machinegun;
 	import daz.guns.Shotgun;
 	import daz.world.Hero;
-	import sentinel.gameplay.world.BeingService;
-	import daz.guns.Gun;
 	import daz.world.Pickup;
+	import sentinel.gameplay.world.BeingService;
 	
 	
 	public class Inventory extends BeingService
@@ -19,19 +19,40 @@ package daz.world.services
 		
 		protected override function construct():void
 		{
-			_guns = new <Gun>[new Handgun(), new Machinegun(), new Shotgun()];
+			_guns = new <Gun>[new Handgun()];
 		}
 		
 		
-		public function addAmmo(pickup:Pickup):void
+		public function add(pickup:Pickup):void
+		{
+			if (pickup.isAmmo || hasGun(pickup.type))
+			{
+				for each(var gun:Gun in _guns)
+				{
+					if (gun.ammoName === pickup.type)
+					{
+						gun.addAmmo(pickup.value);
+					}
+				}
+			}
+			else
+			{
+				_guns.push(pickup.toNewGun());
+			}
+		}
+		
+		
+		public function hasGun(name:String):Boolean
 		{
 			for each(var gun:Gun in _guns)
 			{
-				if (gun.ammoName === pickup.type)
+				if (gun.name === name)
 				{
-					gun.addAmmo(pickup.value);
+					return true;
 				}
 			}
+			
+			return false;
 		}
 		
 		

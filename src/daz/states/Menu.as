@@ -25,7 +25,6 @@ package daz.states
 		{
 			if (button.text === BUTTON_TEXT_PLAY)
 			{
-				trace(storage.load('levelsUnlocked'));
 				if (storage.load('levelsUnlocked') === null)
 				{
 					// Starting a new game.

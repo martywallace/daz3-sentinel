@@ -2,6 +2,7 @@ package daz.world.services
 {
 	
 	import daz.world.Pickup;
+	import daz.world.World;
 	import sentinel.framework.util.Random;
 	import sentinel.gameplay.physics.Vector2D;
 	import sentinel.gameplay.world.BaseWorld;
@@ -13,8 +14,13 @@ package daz.world.services
 		
 		public function make(position:Vector2D, type:String):void
 		{
-			var veclocityRange:int = 120;
 			var pickup:Pickup = new Pickup(type);
+			var veclocityRange:int = 120;
+			
+			if (!(world as World).hero.inventory.hasGun(Pickup.toGun(type)))
+			{
+				pickup.convertToGun();
+			}
 			
 			world.add(pickup);
 			

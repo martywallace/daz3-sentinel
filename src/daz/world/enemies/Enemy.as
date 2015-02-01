@@ -62,7 +62,7 @@ package daz.world.enemies
 				_healthbar.deconstruct();
 			}
 			
-			if (Random.roll(0.3))
+			if (Random.roll(0.9))
 			{
 				dropPickup();
 			}
@@ -84,7 +84,6 @@ package daz.world.enemies
 			if (types !== null)
 			{
 				var type:String = types[int(Random.between(0, types.length))];
-				
 				(world as World).pickupService.make(position, type);
 			}
 		}

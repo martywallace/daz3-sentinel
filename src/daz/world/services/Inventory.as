@@ -27,6 +27,7 @@ package daz.world.services
 		{
 			if (pickup.isAmmo || hasGun(pickup.type))
 			{
+				pickup.convertToAmmo();
 				for each(var gun:Gun in _guns)
 				{
 					if (gun.ammoName === pickup.type)

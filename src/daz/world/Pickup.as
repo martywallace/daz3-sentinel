@@ -38,6 +38,18 @@ package daz.world
 		private static const UTILITY_TYPES:Array = [HEALTHPACK];
 		
 		
+		public static function toGun(type:String):String
+		{
+			return type.replace('Ammo', '');
+		}
+		
+		
+		public static function toAmmo(type:String):String
+		{
+			return type.indexOf('Ammo') >= 0 ? type : type + 'Ammo';
+		}
+		
+		
 		private var _type:String;
 		
 		
@@ -87,6 +99,18 @@ package daz.world
 			}
 			
 			return gun;
+		}
+		
+		
+		public function convertToGun():void
+		{
+			_type = toGun(_type);
+		}
+		
+		
+		public function convertToAmmo():void
+		{
+			_type = toAmmo(_type);
 		}
 		
 		

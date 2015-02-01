@@ -2,8 +2,6 @@ package daz.world
 {
 	
 	import daz.Game;
-	import daz.world.enemies.Rat;
-	import daz.world.enemies.Zombie;
 	import daz.world.services.PickupService;
 	import daz.world.services.SpawnService;
 	import sentinel.gameplay.physics.Debug;

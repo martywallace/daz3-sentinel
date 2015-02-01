@@ -85,7 +85,7 @@ package daz.ui
 			_gunGraphic.alignPivot(Align.RIGHT, Align.BOTTOM);
 			_gunGraphic.x = 5;
 			_gunGraphic.y = 20;
-			_gunGraphic.rotation = 0.1;
+			_gunGraphic.rotation = 0.1
 			
 			_bullets = new <Quad>[];
 			

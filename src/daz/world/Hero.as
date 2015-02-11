@@ -113,7 +113,7 @@ package daz.world
 		{
 			if (inventory.currentGun !== null)
 			{
-				inventory.currentGun.update();
+				inventory.currentGun.step();
 				
 				if (_shooting) inventory.currentGun.attemptFire(this, world);
 			}

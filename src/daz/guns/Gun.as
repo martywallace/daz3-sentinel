@@ -4,10 +4,11 @@ package daz.guns
 	import daz.world.Creature;
 	import sentinel.framework.Data;
 	import sentinel.framework.IStorable;
+	import sentinel.framework.Thing;
 	import sentinel.gameplay.world.BaseWorld;
 	
 	
-	public class Gun implements IStorable
+	public class Gun extends Thing
 	{
 		
 		private var _reloadTimer:int = 0;
@@ -27,6 +28,8 @@ package daz.guns
 		
 		public function Gun()
 		{
+			super();
+			
 			_name = defineName();
 			_ammoName = defineAmmoName();
 			_damage = defineDamage();
@@ -53,7 +56,7 @@ package daz.guns
 		protected function defineOffset():Number { return 0; }
 		
 		
-		public function save():Data
+		public override function save():Data
 		{
 			return super.save().merge({
 				//
@@ -61,7 +64,7 @@ package daz.guns
 		}
 		
 		
-		public function load(data:Data):void
+		public override function load(data:Data):void
 		{
 			super.load(data);
 			
@@ -69,7 +72,16 @@ package daz.guns
 		}
 		
 		
-		public function update():void
+		/**
+		 * TODO: Hmmm...
+		 */
+		public function step():void
+		{
+			update();
+		}
+		
+		
+		protected override function update():void
 		{
 			if (_reloadTimer > 0)
 			{

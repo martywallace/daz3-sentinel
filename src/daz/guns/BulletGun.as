@@ -4,10 +4,11 @@ package daz.guns
 	import daz.world.Creature;
 	import daz.world.enemies.Enemy;
 	import daz.world.Projectile;
+	import daz.world.Tree;
 	import sentinel.framework.util.Random;
 	import sentinel.gameplay.physics.Vector2D;
 	import sentinel.gameplay.world.BaseWorld;
-	import sentinel.gameplay.world.Query;
+	import sentinel.gameplay.world.WorldQuery;
 	import sentinel.gameplay.world.WorldQueryResult;
 	
 	
@@ -31,7 +32,7 @@ package daz.guns
 			
 			var error:Number = Random.between(-errorAngle, errorAngle);
 			var to:Vector2D = from.cast(angle + error, 500);
-			var qr:Vector.<WorldQueryResult> = world.query(Query.line(from, to, 1));
+			var qr:Vector.<WorldQueryResult> = world.query(WorldQuery.create().line(from, to).limit(1));
 			
 			if (qr.length > 0)
 			{
@@ -50,8 +51,16 @@ package daz.guns
 				projectile = new Projectile(from, to);
 			}
 			
-			
-			world.add(projectile);
+			if (projectile !== null)
+			{
+				world.add(projectile);
+			}
+		}
+		
+		
+		protected function defineShotSound():String
+		{
+			return null;
 		}
 		
 		
@@ -63,6 +72,11 @@ package daz.guns
 		protected override function fire(user:Creature, world:BaseWorld):void
 		{
 			fireBullet(user.position.cast(user.rotation, offset), user.rotation, world);
+			
+			if (defineShotSound() !== null)
+			{
+				audio.sfx.play('handgunShotSound');
+			}
 		}
 		
 	}

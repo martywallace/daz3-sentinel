@@ -17,14 +17,17 @@ package daz
 		[Embed(source = '../../assets/Background.jpg')]
 		private var _backgroundAsset:Class;
 		
-		[Embed(source = '../../assets/Zombie.png')]
-		private var _zombieAsset:Class;
-		
 		[Embed(source = '../../assets/General.png')]
 		private var _generalAsset:Class;
 		
+		[Embed(source = '../../assets/gunshot.mp3')]
+		private var _handgunShotSoundAsset:Class;
 		
-		public static const DEBUG_PHYSICS:Boolean = false;
+		[Embed(source = '../../assets/reload.mp3')]
+		private var _reloadSoundAsset:Class;
+		
+		
+		public static const DEBUG_PHYSICS:Boolean = true;
 		public static const DEBUG_PHYSICS_FEATURES:Vector.<int> = new <int>[Debug.CENTER_OF_MASS, Debug.SHAPE];
 		
 		
@@ -36,7 +39,6 @@ package daz
 			var general:Texture = Texture.fromBitmap(new _generalAsset());
 			
 			library.addTexture('background', Texture.fromBitmap(new _backgroundAsset()));
-			library.addTexture('zombie', Texture.fromBitmap(new _zombieAsset()));
 			
 			library.addSheet('all', new Sheet(general, {
 				hero: new Rectangle(1, 144, 55, 50),
@@ -94,6 +96,9 @@ package daz
 			library.addSheet('misc', new Sheet(general, {
 				'hudCorner': new Rectangle(322, 265, 170, 120)
 			}));
+			
+			library.addAudio('handgunShotSound', new _handgunShotSoundAsset());
+			library.addAudio('reloadSoundAsset', new _reloadSoundAsset());
 			
 			loadState(new Menu());
 		}

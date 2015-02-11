@@ -18,6 +18,8 @@ package daz.guns
 		protected override function defineOffset():Number { return 30; }
 		protected override function defineErrorAngle():Number { return 0.1; }
 		
+		protected override function defineShotSound():String { return 'handgunShotSound'; }
+		
 	}
 	
 }

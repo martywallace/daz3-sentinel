@@ -142,6 +142,8 @@ package daz.guns
 				_totalAmmo -= required;
 				_clipAmmo = _clipSize;
 			}
+			
+			audio.sfx.play('reloadSound');
 		}
 		
 		

@@ -98,7 +98,7 @@ package daz
 			}));
 			
 			library.addAudio('handgunShotSound', new _handgunShotSoundAsset());
-			library.addAudio('reloadSoundAsset', new _reloadSoundAsset());
+			library.addAudio('reloadSound', new _reloadSoundAsset());
 			
 			loadState(new Menu());
 		}

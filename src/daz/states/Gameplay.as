@@ -1,8 +1,8 @@
 package daz.states
 {
 	
-	import daz.Game;
 	import daz.events.CreatureEvent;
+	import daz.Game;
 	import daz.ui.HUD;
 	import daz.world.Map;
 	import daz.world.World;
@@ -26,12 +26,18 @@ package daz.states
 		
 		private function _heroDied(event:CreatureEvent):void
 		{
-			// The hero died, back to the Main menu for now.
+			exit();
+		}
+		
+		
+		protected override function exit():void
+		{
 			game.loadState(new Menu());
 		}
 		
 		
 		protected override function get backgroundColor():uint { return 0x000000; }
+		protected override function get backgroundMusic():String { return 'music'; }
 		
 	}
 	

@@ -5,7 +5,7 @@ package daz.world.services
 	import daz.world.enemies.Enemy;
 	import daz.world.Hero;
 	import daz.world.World;
-	import starling.geom.Point;
+	import flash.geom.Point;
 	import sentinel.framework.util.Random;
 	import sentinel.gameplay.physics.Vector2D;
 	import sentinel.gameplay.world.Being;

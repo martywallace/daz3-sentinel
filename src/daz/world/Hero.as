@@ -4,6 +4,7 @@ package daz.world
 	import daz.events.HeroEvent;
 	import daz.guns.Gun;
 	import daz.world.services.Inventory;
+	import flash.geom.Point;
 	import sentinel.framework.client.Keyboard;
 	import sentinel.framework.client.KeyboardState;
 	import sentinel.framework.events.KeyboardEvent;
@@ -71,12 +72,12 @@ package daz.world
 		protected override function defineGraphics():IGraphics
 		{
 			var graphics:Sprite = new Sprite();
-			var hero:Image = library.getImageFromAtlas('all', 'hero');
+			var hero:Image = library.getImageFromSheet('all', 'hero');
 			hero.alignPivot();
 			
 			graphics.depth = World.DEPTH_CREATURES;
 			
-			_gunGraphics = library.getImageFromAtlas('guns', inventory.currentGun.name);
+			_gunGraphics = library.getImageFromSheet('guns', inventory.currentGun.name);
 			_gunGraphics.alignPivot();
 			_gunGraphics.x = 23;
 			
@@ -132,7 +133,8 @@ package daz.world
 				body.linearVelocity = Compass.toVector(dir, speed);
 			}
 			
-			rotation = position.angleTo(game.mouse.getPositionIn(world));
+			var mousePosition:Point = game.mouse.getPositionIn(world);
+			rotation = position.angleToCoords(mousePosition.x, mousePosition.y);
 			
 			super.update();
 		}
@@ -144,7 +146,7 @@ package daz.world
 			{
 				inventory.next();
 				
-				_gunGraphics = _gunGraphics.replace(library.getImageFromAtlas('guns', inventory.currentGun.name))
+				_gunGraphics = _gunGraphics.replace(library.getImageFromSheet('guns', inventory.currentGun.name))
 				_gunGraphics.alignPivot();
 				
 				dispatchEvent(new HeroEvent(HeroEvent.EQUIP_WEAPON));

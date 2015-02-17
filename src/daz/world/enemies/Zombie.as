@@ -26,10 +26,10 @@ package daz.world.enemies
 		{
 			var graphics:Sprite = new Sprite();
 			
-			var head:Image = library.getImageFromAtlas('all', 'zombieHead' + Random.fromArray([1, 2, 3]));
-			var shoulders:Image = library.getImageFromAtlas('all', 'zombieShoulders' + Random.fromArray([1, 2, 3]));
-			var arm1:Image = library.getImageFromAtlas('all', 'zombieArm' + Random.fromArray([1, 2, 3]));
-			var arm2:Image = library.getImageFromAtlas('all', 'zombieArm' + Random.fromArray([1, 2, 3]));
+			var head:Image = library.getImageFromSheet('all', 'zombieHead' + Random.fromArray([1, 2, 3]));
+			var shoulders:Image = library.getImageFromSheet('all', 'zombieShoulders' + Random.fromArray([1, 2, 3]));
+			var arm1:Image = library.getImageFromSheet('all', 'zombieArm' + Random.fromArray([1, 2, 3]));
+			var arm2:Image = library.getImageFromSheet('all', 'zombieArm' + Random.fromArray([1, 2, 3]));
 			
 			head.alignPivot();
 			shoulders.alignPivot();

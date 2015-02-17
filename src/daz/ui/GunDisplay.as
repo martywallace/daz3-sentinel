@@ -29,7 +29,7 @@ package daz.ui
 		{
 			var graphics:Sprite = new Sprite(true);
 			
-			var corner:Image = library.getImageFromAtlas('misc', 'hudCorner');
+			var corner:Image = library.getImageFromSheet('misc', 'hudCorner');
 			corner.alignPivot(Align.RIGHT, Align.BOTTOM);
 			corner.alpha = 0.7;
 			
@@ -76,7 +76,7 @@ package daz.ui
 			if (_gunGraphic !== null) _gunGraphic.deconstruct();
 			if (_ammoDisplay !== null) _ammoDisplay.deconstruct();
 			
-			_gunGraphic = library.getImageFromAtlas('hudWeapons', gun.name);
+			_gunGraphic = library.getImageFromSheet('hudWeapons', gun.name);
 			_ammoDisplay = new Sprite();
 			
 			(graphics as Sprite).addChild(_gunGraphic as DisplayObject);

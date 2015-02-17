@@ -26,7 +26,7 @@ package daz.world
 		
 		protected override function defineGraphics():IGraphics
 		{
-			var graphics:Line = new Line(_start, _end, 3);
+			var graphics:Line = new Line(_start.toPoint(), _end.toPoint(), 3);
 			
 			graphics.depth = World.DEPTH_PROJECTILES;
 			graphics.alpha = 0.5;

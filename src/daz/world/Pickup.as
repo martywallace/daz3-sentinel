@@ -63,7 +63,7 @@ package daz.world
 		
 		protected override function defineGraphics():IGraphics
 		{
-			var graphics:Image = library.getImageFromAtlas('pickups', _type);
+			var graphics:Image = library.getImageFromSheet('pickups', _type);
 			
 			graphics.depth = World.DEPTH_PICKUPS;
 			graphics.alignPivot();

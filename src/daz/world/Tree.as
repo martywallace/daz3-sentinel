@@ -15,7 +15,7 @@ package daz.world
 		
 		protected override function defineGraphics():IGraphics
 		{
-			var graphics:Image = library.getImageFromAtlas('all', 'tree');
+			var graphics:Image = library.getImageFromSheet('all', 'tree');
 			
 			graphics.depth = World.DEPTH_NATURE;
 			graphics.alignPivot();

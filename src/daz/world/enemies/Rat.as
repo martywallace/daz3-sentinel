@@ -19,7 +19,7 @@ package daz.world.enemies
 		
 		protected override function defineGraphics():IGraphics
 		{
-			var graphics:Image = library.getImageFromAtlas('all', 'rat');
+			var graphics:Image = library.getImageFromSheet('all', 'rat');
 			graphics.alignPivot();
 			
 			return graphics;

@@ -30,7 +30,7 @@ package daz.world.services
 				_enemies ++;
 				
 				var enemy:Enemy = Being.create('daz.world.enemies::' + Random.fromArray([
-					'Rat', 'Zombie'
+					'Rat', 'Zombie', 'Mummy'
 				])) as Enemy;
 				
 				var position:Point = Random.inRing(hero.position.x, hero.position.y, 600, 700);

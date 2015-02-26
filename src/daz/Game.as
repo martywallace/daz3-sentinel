@@ -10,6 +10,7 @@ package daz
 	import sentinel.framework.graphics.Sheet;
 	import sentinel.framework.graphics.Texture;
 	import sentinel.gameplay.physics.Debug;
+	import daz.world.enemies.Mummy;
 	
 	
 	public class Game extends BaseGame
@@ -35,7 +36,7 @@ package daz
 		public static const DEBUG_PHYSICS_FEATURES:Vector.<int> = new <int>[Debug.CENTER_OF_MASS, Debug.SHAPE];
 		
 		
-		private var _classes:Vector.<Class> = new <Class>[Rat, Zombie];
+		private var _classes:Vector.<Class> = new <Class>[Rat, Zombie, Mummy];
 		
 		
 		protected override function construct():void

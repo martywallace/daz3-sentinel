@@ -15,7 +15,7 @@ package daz.world.enemies
 	import sentinel.gameplay.world.IGroupable;
 	
 	
-	public class Zombie extends Enemy implements IGroupable
+	public class Zombie extends Enemy
 	{
 		
 		protected override function defineHealth():int{ return 6; }
@@ -74,10 +74,6 @@ package daz.world.enemies
 		{
 			(world as World).hero.takeDamage(1);
 		}
-		
-		
-		public function get groupName():String { return 'zombies'; }
-		public function get nameInGroup():String { return 'zombie' + id; }
 		
 	}
 

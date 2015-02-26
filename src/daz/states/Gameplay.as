@@ -24,6 +24,12 @@ package daz.states
 		}
 		
 		
+		protected override function update():void
+		{
+			super.update();
+		}
+		
+		
 		private function _heroDied(event:CreatureEvent):void
 		{
 			exit();
